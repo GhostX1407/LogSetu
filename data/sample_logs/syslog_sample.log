@@ -1,0 +1,2 @@
+<34>1 2026-09-07T10:12:03.123Z fw01.branch.local sshd 1234 ID47 - Failed password for invalid user admin from 203.0.113.45 port 51422 ssh2
+<134>1 2026-09-07T10:12:05.456Z fw01.branch.local kernel - - - IPTABLES-DENY: IN=eth0 OUT= SRC=203.0.113.45 DST=10.0.0.5 PROTO=TCP SPT=51423 DPT=22

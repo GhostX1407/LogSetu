@@ -1,0 +1,1 @@
+CEF:0|PaloAltoNetworks|PAN-OS|10.1|THREAT|url|3|src=203.0.113.45 dst=10.0.0.12 spt=443 dpt=51500 act=deny cat=Suspicious-URL cs1=malware-c2 cs1Label=ThreatCategory
