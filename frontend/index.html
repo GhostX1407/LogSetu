@@ -1,12 +1,1842 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LogSetu — Universal Log Pre-processing Framework</title>
-  </head>
-  <body class="bg-base-light dark:bg-base-dark">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" data-theme="deep-vault">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LogSetu — Forensic Log Ledger & Security Operations</title>
+  <meta name="description"
+    content="LogSetu log-normalization platform and command console featuring the Midnight Ledger aesthetic. Every log. One ledger.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Fullscreen Directional Liquid Water Transition Wave (100% Transparent & Colorless) -->
+  <div class="theme-wave-curtain" id="themeWaveCurtain" aria-hidden="true">
+    <!-- Multi-harmonic Fluid Water Wave SVG -->
+    <svg class="water-wave-svg" viewBox="0 0 520 1200" preserveAspectRatio="none">
+      <defs>
+        <!-- Pure Transparent Water Gradient (Zero color tint, pure optical clarity) -->
+        <linearGradient id="waterBodyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+          <stop offset="20%" stop-color="#ffffff" stop-opacity="0.02" />
+          <stop offset="55%" stop-color="#ffffff" stop-opacity="0.05" />
+          <stop offset="85%" stop-color="#ffffff" stop-opacity="0.02" />
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Water Meniscus Specular Highlight Ribbon (Sunlight glint on clear water surface) -->
+        <linearGradient id="waterCrestGlint" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.1" />
+          <stop offset="16%" stop-color="#ffffff" stop-opacity="0.75" />
+          <stop offset="32%" stop-color="#ffffff" stop-opacity="0.3" />
+          <stop offset="50%" stop-color="#ffffff" stop-opacity="0.95" />
+          <stop offset="68%" stop-color="#ffffff" stop-opacity="0.35" />
+          <stop offset="84%" stop-color="#ffffff" stop-opacity="0.8" />
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1" />
+        </linearGradient>
+
+        <!-- Secondary Capillary Ripple Ribbon -->
+        <linearGradient id="waterRippleGlint" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+          <stop offset="25%" stop-color="#ffffff" stop-opacity="0.4" />
+          <stop offset="60%" stop-color="#ffffff" stop-opacity="0.2" />
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+
+      <!-- Secondary Trailing Water Ripple Wave -->
+      <path class="water-wave-trail" 
+            d="M 180,0 C 290,180 90,380 250,580 C 390,760 160,940 240,1200 L 0,1200 L 0,0 Z" 
+            fill="url(#waterBodyGradient)" />
+
+      <!-- Primary Liquid Water Wave Body -->
+      <path class="water-wave-main" 
+            d="M 310,0 C 440,160 210,360 390,560 C 520,740 270,920 370,1200 L 0,1200 L 0,0 Z" 
+            fill="url(#waterBodyGradient)" />
+
+      <!-- Glistening Liquid Meniscus (Leading Wave Crest Glint) -->
+      <path class="water-crest-line" 
+            d="M 310,0 C 440,160 210,360 390,560 C 520,740 270,920 370,1200" 
+            fill="none" 
+            stroke="url(#waterCrestGlint)" 
+            stroke-width="2.5" />
+
+      <!-- Fine Capillary Ripple Echo -->
+      <path class="water-ripple-line" 
+            d="M 335,0 C 465,160 235,360 415,560 C 545,740 295,920 395,1200" 
+            fill="none" 
+            stroke="url(#waterRippleGlint)" 
+            stroke-width="1.2" 
+            stroke-dasharray="14 6" />
+    </svg>
+
+    <!-- Physical Optical Backdrop Refraction Lens -->
+    <div class="water-optic-lens"></div>
+
+    <!-- Soft Glistening Liquid Caustic Sheen Points -->
+    <div class="water-caustic water-caustic-1"></div>
+    <div class="water-caustic water-caustic-2"></div>
+    <div class="water-caustic water-caustic-3"></div>
+  </div>
+
+  <!-- Film-Grain Texture Overlay (SVG feTurbulence) -->
+  <svg class="grain-overlay" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.45 0" />
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+  </svg>
+
+  <!-- Global SVG Gradients for Charts and Accents -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="gildedSparkGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ae9357" />
+        <stop offset="45%" stop-color="#fff0cc" />
+        <stop offset="75%" stop-color="#ae9357" />
+        <stop offset="100%" stop-color="#cc9166" />
+      </linearGradient>
+      <linearGradient id="gildedSparkArea" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#cc9166" stop-opacity="0.3" />
+        <stop offset="100%" stop-color="#cc9166" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Ambient Luminous Background Orbs for Authentic VisionOS / iOS 3D Glass Refraction -->
+  <div class="ambient-light-container" aria-hidden="true">
+    <div class="ambient-orb ambient-orb-copper"></div>
+    <div class="ambient-orb ambient-orb-slate"></div>
+    <div class="ambient-orb ambient-orb-gilded"></div>
+  </div>
+
+  <div class="app-wrapper">
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-brand" title="LogSetu — Forensic Log Ledger">
+        <svg class="brand-wordmark-svg" viewBox="0 0 106 28" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LogSetu">
+          <text x="0" y="21.5" class="wordmark-text">LogSetu</text>
+          <path d="M 44.5 9 C 48.5 5.5, 55 5.5, 59 7.5" class="wordmark-bridge" />
+        </svg>
+        <span class="brand-sub">Forensic Ledger</span>
+      </div>
+
+      <div class="nav-telemetry">
+        <div class="telemetry-item">
+          <div class="pulse-dot"></div>
+          <span class="telemetry-val">Live Ingestion</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-muted">EPS</span>
+          <span class="telemetry-val" id="telemetryEps">428,912</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-muted">UTC</span>
+          <span class="telemetry-val" id="utcClock">23:25:40</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Emergency Freeze Action -->
+        <button class="btn-pill btn-freeze" id="btnForensicFreeze" title="Lock ingestion stream and freeze tamper-evident state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span id="freezeStatusText">Freeze</span>
+        </button>
+
+        <!-- Minimal Aesthetic Sound Toggle Button (Dual Symbol: Mute ↔ Active) -->
+        <button class="btn-pill sound-toggle-btn" id="btnSoundToggle" title="Sound: Off (Click to turn on audio feedback)" aria-label="Toggle mechanical audio feedback">
+          <span class="sound-icon-wrap">
+            <!-- Muted Speaker Icon (When sound is OFF) -->
+            <svg class="sound-mode-icon sound-icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="22" y1="9" x2="16" y2="15"></line>
+              <line x1="16" y1="9" x2="22" y2="15"></line>
+            </svg>
+            <!-- Active Speaker Waves Icon (When sound is ON) -->
+            <svg class="sound-mode-icon sound-icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+          </span>
+          <span id="soundStatusText" class="sound-status-sr">Sound: Off</span>
+        </button>
+
+        <!-- Single Theme Toggle Button (Dark: Deep Vault / Light: Ice White) -->
+        <button class="btn-pill theme-toggle-btn" id="btnThemeToggle" title="Theme: Dark (Deep Vault). Click to switch to Light (Ice White)" aria-label="Toggle theme mode">
+          <span class="theme-icon-wrap">
+            <!-- Moon Icon (Dark Mode: Deep Vault) -->
+            <svg class="theme-mode-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <!-- Sun Icon (Light Mode: Ice White) -->
+            <svg class="theme-mode-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+          <span class="theme-toggle-label" id="themeLabelText">Dark</span>
+        </button>
+
+        <!-- Air-Gapped Deployment Mode Toggle Badge -->
+        <button class="btn-pill airgap-badge" id="btnAirgapToggle" title="Switch between Smart Cloud AI and 100% Offline Private AI (Demo hotkey: 'A')">
+          <span class="airgap-icon-wrap">
+            <svg class="airgap-icon airgap-icon-online" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+              <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+              <line x1="12" y1="20" x2="12.01" y2="20"></line>
+            </svg>
+            <svg class="airgap-icon airgap-icon-offline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+              <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+              <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+              <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+              <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+              <line x1="12" y1="20" x2="12.01" y2="20"></line>
+            </svg>
+          </span>
+          <span class="airgap-label" id="airgapStatusText">Cloud AI</span>
+          <span class="airgap-sweep-line"></span>
+        </button>
+
+        <!-- Explain Mode Toggle (Addendum: Legibility for Non-Technical Evaluators & Judges) -->
+        <button class="btn-pill explain-toggle-btn" id="btnExplainToggle" title="Toggle Plain-English Explain Mode (for Evaluators & Non-Technical Judges)">
+          <span class="explain-icon-wrap">
+            <svg class="explain-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18h6"></path>
+              <path d="M10 22h4"></path>
+              <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path>
+            </svg>
+          </span>
+          <span class="explain-btn-label" id="explainStatusText">Explain</span>
+        </button>
+
+        <!-- What is this? 60-second summary & guided tour reopen button -->
+        <button class="btn-pill btn-icon-only btn-help-tour" id="btnHelpTour" title="What is this? 60-Second Overview & Guided Tour">
+          <span class="help-question-glyph">?</span>
+        </button>
+
+        <button class="btn-pill active" id="btnExportLedger" title="Export verified cryptographic record seal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Export Seal</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Console View Navigator (6 Operational Screens) -->
+    <nav class="console-view-nav" id="consoleViewNav" aria-label="Console Operational Views">
+      <div class="view-nav-inner">
+        <button class="view-nav-item active" data-target-view="view-overview">
+          <span class="view-folio">01</span>
+          <span class="view-name">Live Overview</span>
+        </button>
+        <button class="view-nav-item" data-target-view="view-traceability">
+          <span class="view-folio">02</span>
+          <span class="view-name">Raw ↔ Clean Logs</span>
+        </button>
+        <button class="view-nav-item" data-target-view="view-wizard">
+          <span class="view-folio">03</span>
+          <span class="view-name">AI Log Translator</span>
+        </button>
+        <button class="view-nav-item" data-target-view="view-drift">
+          <span class="view-folio">04</span>
+          <span class="view-name">Format Change Watch</span>
+        </button>
+        <button class="view-nav-item" data-target-view="view-hashchain">
+          <span class="view-folio">05</span>
+          <span class="view-name">Tamper-Proof Ledger</span>
+        </button>
+        <button class="view-nav-item" data-target-view="view-graph">
+          <span class="view-folio">06</span>
+          <span class="view-name">Attack Story Map</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Viewport (Ledger Spine + Main Canvas) -->
+    <main class="main-viewport">
+
+      <!-- SIGNATURE STRUCTURAL MOTIF: THE LEDGER SPINE -->
+      <aside class="ledger-spine-container glass-card-3d" aria-label="Pipeline Architecture Spine">
+        <div class="spine-header">
+          <span class="spine-badge">How Logs Flow</span>
+          <div class="spine-status">System Active</div>
+        </div>
+
+        <div class="spine-rail" id="spineRail">
+          <!-- 1px Vertical Hairline -->
+          <div class="spine-hairline"></div>
+          <!-- Traveling Copper Dot -->
+          <div class="spine-traveler" id="spineTraveler"></div>
+
+          <!-- Stage Nodes (Folio Numerals in Ivy Presto/Playfair) -->
+          <div class="spine-node active" data-stage="0" style="top: 0%;">
+            <div class="spine-node-point"></div>
+            <span class="spine-folio">01</span>
+            <span class="spine-label">Ingest</span>
+            <span class="spine-rate">1.4 GB/s Live</span>
+          </div>
+
+          <div class="spine-node" data-stage="1" style="top: 20%;">
+            <div class="spine-node-point"></div>
+            <span class="spine-folio">02</span>
+            <span class="spine-label">Safe Vault</span>
+            <span class="spine-rate">Original Backup</span>
+          </div>
+
+          <div class="spine-node" data-stage="2" style="top: 40%;">
+            <div class="spine-node-point"></div>
+            <span class="spine-folio">03</span>
+            <span class="spine-label">Quality Check</span>
+            <span class="spine-rate">Checks Changes</span>
+          </div>
+
+          <div class="spine-node" data-stage="3" style="top: 60%;">
+            <div class="spine-node-point"></div>
+            <span class="spine-folio">04</span>
+            <span class="spine-label">AI Reader</span>
+            <span class="spine-rate">Finds Fields</span>
+          </div>
+
+          <div class="spine-node" data-stage="4" style="top: 80%;">
+            <div class="spine-node-point"></div>
+            <span class="spine-folio">05</span>
+            <span class="spine-label">Standardizer</span>
+            <span class="spine-rate">Clean Format</span>
+          </div>
+
+          <div class="spine-node" data-stage="5" style="top: 100%;">
+            <div class="spine-node-point"></div>
+            <span class="spine-folio">06</span>
+            <span class="spine-label">Smart Route</span>
+            <span class="spine-rate">Alerts & Archive</span>
+          </div>
+        </div>
+
+        <div class="spine-footer">
+          <div class="spine-integrity">
+            <span>Fingerprint Seal:</span>
+            <span class="spine-integrity-badge">VERIFIED OK</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Operational Console Content (6 Dedicated View Panels) -->
+      <div class="console-content">
+
+        <!-- ====================================================================
+             VIEW 01: OVERVIEW DASHBOARD
+             ==================================================================== -->
+        <div class="view-panel active" id="view-overview">
+          <!-- Hero Section -->
+          <section class="hero-section">
+            <div class="hero-editorial">
+              <div class="hero-eyebrow">CENTRAL SECURITY LOG HUB</div>
+              <h1 class="hero-title">Every system log. <em>One tamper-proof record book.</em></h1>
+              <p class="hero-desc">
+                Watches your company's firewalls, servers, and computers in real time. It translates their different languages into one clean standard format (<span class="term-explain" data-term="ocsf">OCSF</span>) and locks them with digital fingerprints so evidence can never be faked.
+              </p>
+              <p class="explain-subtitle">
+                <span class="explain-icon-tag" aria-hidden="true">
+                  <svg class="explain-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    <line x1="8" y1="6" x2="16" y2="6"></line>
+                    <line x1="8" y1="10" x2="16" y2="10"></line>
+                  </svg>
+                </span>
+                <span class="explain-text">Every device on the network — firewalls, servers, apps — writes its own diary in its own language. This screen watches all those diaries come in, live.</span>
+              </p>
+            </div>
+          </section>
+
+          <!-- KPI Metrics Row -->
+          <section class="kpi-row" aria-label="Key Performance Indicators">
+            <!-- KPI 1 -->
+            <article class="kpi-card glass-card-3d">
+              <div class="kpi-head">
+                <span class="kpi-label">Logs Processed / Sec</span>
+                <span class="kpi-delta">+14.2%</span>
+              </div>
+              <div class="kpi-body">
+                <span class="kpi-numeral" id="kpiThroughput">429,116</span>
+                <span class="kpi-subtext">events/sec (1.4 GB/s) · Smooth</span>
+              </div>
+              <svg class="kpi-sparkline" viewBox="0 0 200 40">
+                <path class="sparkline-fill" d="M0,35 Q30,22 60,26 T120,14 T180,18 L200,8 L200,40 L0,40 Z" />
+                <path class="sparkline-path" d="M0,35 Q30,22 60,26 T120,14 T180,18 L200,8" />
+              </svg>
+            </article>
+
+            <!-- KPI 2 -->
+            <article class="kpi-card glass-card-3d">
+              <div class="kpi-head">
+                <span class="kpi-label">Security Threats Found</span>
+                <span class="kpi-delta copper">03 DETECTED</span>
+              </div>
+              <div class="kpi-body">
+                <span class="kpi-numeral" style="color: var(--accent-copper);">03</span>
+                <span class="kpi-subtext">needs attention right now</span>
+              </div>
+              <svg class="kpi-sparkline" viewBox="0 0 200 40">
+                <path class="sparkline-fill" d="M0,38 Q40,36 80,32 T140,28 T170,12 L200,6 L200,40 L0,40 Z" />
+                <path class="sparkline-path" d="M0,38 Q40,36 80,32 T140,28 T170,12 L200,6" />
+              </svg>
+            </article>
+
+            <!-- KPI 3 -->
+            <article class="kpi-card glass-card-3d">
+              <div class="kpi-head">
+                <span class="kpi-label">Translation Accuracy</span>
+                <span class="kpi-delta">+0.04%</span>
+              </div>
+              <div class="kpi-body">
+                <span class="kpi-numeral">99.84%</span>
+                <span class="kpi-subtext">perfect translation · 0 data lost</span>
+              </div>
+              <svg class="kpi-sparkline" viewBox="0 0 200 40">
+                <path class="sparkline-fill" d="M0,20 Q50,16 100,12 T160,10 L200,7 L200,40 L0,40 Z" />
+                <path class="sparkline-path" d="M0,20 Q50,16 100,12 T160,10 L200,7" />
+              </svg>
+            </article>
+
+            <!-- KPI 4 -->
+            <article class="kpi-card glass-card-3d">
+              <div class="kpi-head">
+                <span class="kpi-label">Tamper-Proof Blocks Sealed</span>
+                <span class="kpi-delta">IMMUTABLE</span>
+              </div>
+              <div class="kpi-body">
+                <span class="kpi-numeral" id="kpiBlock">#891,241</span>
+                <span class="kpi-subtext">100% verified & locked</span>
+              </div>
+              <svg class="kpi-sparkline" viewBox="0 0 200 40">
+                <path class="sparkline-fill" d="M0,32 L40,28 L80,24 L120,18 L160,12 L200,5 L200,40 L0,40 Z" />
+                <path class="sparkline-path" d="M0,32 L40,28 L80,24 L120,18 L160,12 L200,5" />
+              </svg>
+            </article>
+          </section>
+
+          <!-- DUAL BOTTOM PANELS: LIVE LOG STREAM & HASH CHAIN SUMMARY -->
+          <section class="bottom-grid">
+            <!-- Live Event Stream Table -->
+            <div class="stream-panel glass-card-3d">
+              <div class="stream-head">
+                <div class="stream-title-wrap">
+                  <h3 class="stream-title">Live Network Activity Stream</h3>
+                  <span class="stream-live-tag">
+                    <span class="pulse-dot" style="width:4px;height:4px;"></span>
+                    Live Feed
+                  </span>
+                </div>
+                <div class="stream-tools">
+                  <input type="text" class="search-input" id="streamSearch" placeholder="Search by user, IP address, device, or incident...">
+                  <button class="btn-pill" id="btnPauseResume" title="Pause or resume live incoming feed">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12">
+                      <rect x="6" y="4" width="4" height="16"></rect>
+                      <rect x="14" y="4" width="4" height="16"></rect>
+                    </svg>
+                    <span id="pauseResumeText">Pause Stream</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="stream-table-wrap">
+                <table class="stream-table">
+                  <thead>
+                    <tr>
+                      <th>Time (UTC)</th>
+                      <th>Device / Source</th>
+                      <th>Event Code</th>
+                      <th>Activity Type</th>
+                      <th>Risk Level</th>
+                      <th>Tamper Proof?</th>
+                    </tr>
+                  </thead>
+                  <tbody id="streamTableBody">
+                    <!-- Stream rows dynamically injected by app.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Hash-Chain Summary Card -->
+            <div class="hashchain-panel glass-card-3d">
+              <div>
+                <div class="hashchain-head-group">
+                  <h3 class="hashchain-title">Tamper-Proof Record Chain</h3>
+                  <span class="chain-badge-ok">● 100% UNTOUCHED</span>
+                </div>
+                <p class="hashchain-sub">Every log bundle is sealed with digital fingerprints so past records can never be edited or hidden.</p>
+
+                <!-- Cryptographic State Summary Strip -->
+                <div class="ledger-health-strip">
+                  <div class="health-strip-item">
+                    <span class="strip-label">CHAIN INTEGRITY</span>
+                    <span class="strip-val" style="color: #2ecc71;">● 100% VERIFIED</span>
+                  </div>
+                  <div class="health-strip-item">
+                    <span class="strip-label">MASTER FINGERPRINT</span>
+                    <span class="strip-val">0x9a8e...d24b</span>
+                  </div>
+                  <div class="health-strip-item">
+                    <span class="strip-label">AUDIT PROOF</span>
+                    <span class="strip-val" style="color: var(--accent-copper);">Cryptographic Proof</span>
+                  </div>
+                </div>
+
+                <div class="chain-blocks-list" id="chainBlocksList">
+                  <div class="chain-block-item" data-block-id="891241">
+                    <span class="block-folio-num">891</span>
+                    <div class="block-meta">
+                      <span class="block-hash">0x9a8e...d24b</span>
+                      <span class="block-time">Block #891,241 · User Login Event (Cleaned)</span>
+                    </div>
+                    <span class="block-status-badge">SEALED</span>
+                  </div>
+
+                  <div class="chain-block-item" data-block-id="891240">
+                    <span class="block-folio-num">890</span>
+                    <div class="block-meta">
+                      <span class="block-hash">0x4f12...e81c</span>
+                      <span class="block-time">Block #891,240 · Firewall Threat Event (Cleaned)</span>
+                    </div>
+                    <span class="block-status-badge">SEALED</span>
+                  </div>
+
+                  <div class="chain-block-item" data-block-id="891239">
+                    <span class="block-folio-num">889</span>
+                    <div class="block-meta">
+                      <span class="block-hash">0xb73a...912f</span>
+                      <span class="block-time">Block #891,239 · Antivirus Alert (Cleaned)</span>
+                    </div>
+                    <span class="block-status-badge">SEALED</span>
+                  </div>
+
+                  <div class="chain-block-item" data-block-id="891238">
+                    <span class="block-folio-num">888</span>
+                    <div class="block-meta">
+                      <span class="block-hash">0x1109...aa44</span>
+                      <span class="block-time">Block #891,238 · Cloud Admin Event (Cleaned)</span>
+                    </div>
+                    <span class="block-status-badge">SEALED</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chain-actions">
+                <button class="btn-verify-chain" id="btnVerifyChain">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                  <span id="verifyChainText">Inspect Audit Proof</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- TIERED & COST-AWARE ROUTING DIAGRAM -->
+          <section class="routing-section glass-card-3d" aria-label="Tiered Routing Architecture">
+            <div class="routing-head">
+              <div class="routing-title-group">
+                <div class="routing-badge-row">
+                  <span class="view-badge">Smart Cost Sorter</span>
+                  <span class="routing-tag">Instant Alerts vs Cheap Storage</span>
+                </div>
+                <h3 class="routing-title">Smart Route: Instant Alerts vs Cheap Long-Term Storage</h3>
+                <p class="routing-sub">Saves 74% on cloud storage bills by sending urgent threats to high-speed security alarms and archiving quiet routine logs to cheap storage.</p>
+              </div>
+              <div class="routing-metrics-summary">
+                <div class="route-stat">
+                  <span class="route-stat-label">STORAGE MONEY SAVED</span>
+                  <span class="route-stat-val copper">-74.2%</span>
+                </div>
+                <div class="route-stat">
+                  <span class="route-stat-label">SORTING ACCURACY</span>
+                  <span class="route-stat-val">99.994%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="routing-diagram-container">
+              <!-- SVG Flow Canvas with continuous particle animations -->
+              <svg class="routing-flow-svg" viewBox="0 0 1000 240" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <linearGradient id="routeCopperGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ae9357" />
+                    <stop offset="35%" stop-color="#cc9166" />
+                    <stop offset="100%" stop-color="#e8b18a" />
+                  </linearGradient>
+                  <filter id="particleGlow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="2.5" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                </defs>
+
+                <!-- Lead-in Line from Ingress to Severity Classifier -->
+                <path class="route-lead-line" d="M 180 120 L 320 120" stroke="rgba(255,255,255,0.18)" stroke-width="1.8" stroke-dasharray="4 4" />
+
+                <!-- Top Path: Real-Time Path (Hot) -->
+                <path id="pathRealTime" class="route-path-realtime" 
+                      d="M 365 120 C 445 120, 480 60, 600 60 L 740 60" 
+                      fill="none" stroke="url(#routeCopperGrad)" stroke-width="2.5" />
+
+                <!-- Bottom Path: Batched / Sampled Path (Cold) -->
+                <path id="pathBatched" class="route-path-batched" 
+                      d="M 365 120 C 445 120, 480 180, 600 180 L 740 180" 
+                      fill="none" stroke="#2e3038" stroke-width="2" />
+
+                <!-- Particles: Real-Time Path (Continuous ambient 1.5s loop) -->
+                <circle class="ambient-particle hot-p1" r="3.5" fill="#fff0cc" filter="url(#particleGlow)">
+                  <animateMotion dur="1.5s" repeatCount="indefinite" path="M 365 120 C 445 120, 480 60, 600 60 L 740 60" />
+                </circle>
+                <circle class="ambient-particle hot-p2" r="3" fill="#cc9166" opacity="0.85">
+                  <animateMotion dur="1.5s" begin="0.5s" repeatCount="indefinite" path="M 365 120 C 445 120, 480 60, 600 60 L 740 60" />
+                </circle>
+                <circle class="ambient-particle hot-p3" r="2.5" fill="#ffffff" opacity="0.7">
+                  <animateMotion dur="1.5s" begin="1.0s" repeatCount="indefinite" path="M 365 120 C 445 120, 480 60, 600 60 L 740 60" />
+                </circle>
+
+                <!-- Particles: Batched / Sampled Path (Slower, grouping into batch pulse every 3s) -->
+                <g class="batch-pulse-cluster">
+                  <circle class="ambient-particle cold-p1" r="3" fill="#5e616e">
+                    <animateMotion dur="3.0s" repeatCount="indefinite" path="M 365 120 C 445 120, 480 180, 600 180 L 740 180" />
+                  </circle>
+                  <circle class="ambient-particle cold-p2" r="2.5" fill="#464853">
+                    <animateMotion dur="3.0s" begin="0.14s" repeatCount="indefinite" path="M 365 120 C 445 120, 480 180, 600 180 L 740 180" />
+                  </circle>
+                  <circle class="ambient-particle cold-p3" r="2" fill="#3d404b">
+                    <animateMotion dur="3.0s" begin="0.28s" repeatCount="indefinite" path="M 365 120 C 445 120, 480 180, 600 180 L 740 180" />
+                  </circle>
+                </g>
+
+                <!-- Labels along lines -->
+                <text x="475" y="44" fill="#cc9166" font-family="JetBrains Mono" font-size="12" font-weight="600" letter-spacing="0.04em">HIGH-PRIORITY ALARMS (INSTANT PATH)</text>
+                <text x="475" y="206" fill="#777a88" font-family="JetBrains Mono" font-size="12" letter-spacing="0.04em">ROUTINE QUIET LOGS (CHEAP STORAGE PATH)</text>
+              </svg>
+
+              <!-- Node 1: Incoming Event -->
+              <div class="route-node node-ingress">
+                <div class="node-icon-box">
+                  <span class="pulse-dot" style="width:5px;height:5px;"></span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </div>
+                <div class="node-text">
+                  <span class="node-title">New Log Arrives</span>
+                  <span class="node-sub">From any device or app</span>
+                </div>
+              </div>
+
+              <!-- Node 2: Diamond Severity Classifier -->
+              <div class="route-node-diamond">
+                <div class="diamond-box">
+                  <div class="diamond-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="12 2 2 12 12 22 22 12 12 2"></polygon>
+                    </svg>
+                  </div>
+                </div>
+                <div class="diamond-text">
+                  <span class="node-title">Is It an Emergency?</span>
+                  <span class="node-sub">Smart Risk Evaluator</span>
+                </div>
+              </div>
+
+              <!-- Node 3: OpenSearch (Top Destination) -->
+              <div class="route-node node-dest-hot">
+                <div class="node-icon-box copper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <path d="M11 8v6M8 11h6"></path>
+                  </svg>
+                </div>
+                <div class="node-text">
+                  <span class="node-title">Instant Alarm Search</span>
+                  <span class="node-sub">Fast search for security guards</span>
+                  <div class="route-live-counter copper" id="counterHotStream">
+                    <span class="counter-dot-live"></span>
+                    <span class="counter-val" id="counterHotVal">1,204</span> events/sec
+                  </div>
+                </div>
+              </div>
+
+              <!-- Node 4: Parquet / MinIO (Bottom Destination) -->
+              <div class="route-node node-dest-cold">
+                <div class="node-icon-box slate">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                </div>
+                <div class="node-text">
+                  <span class="node-title">Cheap Safe Storage</span>
+                  <span class="node-sub">Compressed permanent archive</span>
+                  <div class="route-live-counter slate" id="counterColdStream">
+                    <span class="counter-pulse-glyph">⧗</span>
+                    <span class="counter-val" id="counterColdVal">18,900</span> events/min (batched)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- ====================================================================
+             VIEW 02: RAW ↔ NORMALIZED TRACEABILITY WORKBENCH
+             ==================================================================== -->
+        <div class="view-panel" id="view-traceability">
+          <section class="view-hero-editorial">
+            <span class="view-badge">Pipeline Stage 04 & 05</span>
+            <h1 class="view-editorial-title">Original Raw Log ↔ <em>Clean Standard Version.</em></h1>
+            <p class="view-editorial-desc">
+              Every single character from the original device is preserved and mapped with 100% mathematical fidelity into clean <span class="term-explain" data-term="ocsf">OCSF</span> standard format. Hover over any line to see live visual connection threads.
+            </p>
+            <p class="explain-subtitle">
+              <span class="explain-icon-tag" aria-hidden="true">
+                <svg class="explain-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+              <span class="explain-text">For every log we clean up, you can always click back and see exactly what it looked like before we touched it — nothing is ever hidden or lost.</span>
+            </p>
+          </section>
+
+          <!-- TRACEABILITY WORKBENCH: RAW ↔ OCSF NORMALIZED -->
+          <section class="workbench-card glass-card-3d">
+            <div class="workbench-header">
+              <div class="workbench-title-group">
+                <span class="workbench-badge">Audit Engine</span>
+                <h2 class="workbench-title">Side-by-Side Translation Proof</h2>
+              </div>
+              <div class="workbench-controls">
+                <!-- Custom Gilded Slider -->
+                <div class="slider-container" title="Adjust Confidence Cutoff">
+                  <span class="slider-label">Translation Strictness</span>
+                  <div class="custom-range-track" id="customSlider">
+                    <div class="custom-range-progress" id="sliderProgress"></div>
+                    <div class="custom-range-thumb" id="sliderThumb"></div>
+                  </div>
+                  <span class="slider-val" id="sliderValDisplay">94%</span>
+                </div>
+
+                <button class="btn-pill" id="btnToggleThreads">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="9" x2="20" y2="9"></line>
+                    <line x1="4" y1="15" x2="20" y2="15"></line>
+                    <line x1="10" y1="3" x2="8" y2="21"></line>
+                    <line x1="16" y1="3" x2="14" y2="21"></line>
+                  </svg>
+                  <span id="threadToggleLabel">Visual Links: Active</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- EXPLAINABLE NL QUERY BAR -->
+            <div class="nl-query-workbench">
+              <form class="nl-query-form" id="nlQueryForm" onsubmit="return false;">
+                <div class="nl-input-bar">
+                  <div class="nl-input-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </div>
+                  <input type="text" class="nl-query-input" id="nlQueryInput" 
+                         placeholder="Ask in plain English: Why was this translated this way? (e.g. why is logonType=10 Remote Login?)" 
+                         autocomplete="off" />
+                  <button type="submit" class="btn-pill active nl-submit-btn" id="nlQuerySubmit">
+                    <span>Explain in Plain English</span>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Sliding Answer Card -->
+              <div class="nl-answer-card" id="nlAnswerCard" style="display: none;">
+                <div class="nl-answer-header">
+                  <div class="nl-answer-tag">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span>PLAIN-ENGLISH AUDIT EXPLANATION</span>
+                  </div>
+                  <button type="button" class="nl-close-btn" id="nlCloseBtn" title="Dismiss explanation">✕</button>
+                </div>
+                <p class="nl-answer-text" id="nlAnswerText">
+                  Field <code class="nl-token">logonType=10</code> was normalized into <code class="nl-token">"logon_type": "RemoteInteractive"</code> because code 10 represents a Remote Desktop (RDP) login according to official Windows security definitions, fulfilling the universal <span class="term-explain" data-term="ocsf">OCSF</span> Authentication requirement.
+                </p>
+                <div class="nl-answer-actions">
+                  <a href="javascript:void(0)" class="nl-rule-link" id="nlViewRuleLink">
+                    <span>View exact translation rule →</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trace Split Workspace -->
+            <div class="trace-split-wrapper" id="traceSplitWrapper">
+              <!-- Left: Raw Log Monospace Panel -->
+              <div class="trace-panel trace-panel-raw">
+                <div class="trace-panel-head">
+                  <span class="panel-format-tag active">
+                    <!-- CEF Format Glyph (14x14 monoline, 1.5px stroke) -->
+                    <svg class="format-glyph format-glyph-cef active" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="CEF format glyph">
+                      <rect x="1.5" y="2" width="11" height="10" rx="2"></rect>
+                      <line x1="5" y1="4.5" x2="5" y2="9.5"></line>
+                      <line x1="9" y1="4.5" x2="9" y2="9.5"></line>
+                      <line x1="1.5" y1="6" x2="12.5" y2="6"></line>
+                    </svg>
+                    Original Raw Log (From Windows Computer)
+                  </span>
+                  <div class="panel-meta-actions">
+                    <span class="panel-meta-tag">Safe Store · 1,420 bytes</span>
+                    <button type="button" class="panel-info-btn" id="btnRawLogInfo" title="Click for a quick simple explanation of what this log is and what it is for" aria-label="Explain original raw log">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
+                      <span>Explain Log</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Expandable Plain-English Explanation Card -->
+                <div class="panel-explainer-card" id="rawLogInfoCard" style="display: none;">
+                  <div class="explainer-card-header">
+                    <span class="explainer-card-badge">💡 SIMPLE EXPLANATION: WHAT IS THIS &amp; WHAT IS IT FOR?</span>
+                    <button type="button" class="explainer-close-btn" id="btnCloseRawInfo" title="Close explanation">✕</button>
+                  </div>
+                  <p class="explainer-main-text">
+                    <strong>What is this:</strong> This is the exact, unedited security record created by Windows the instant employee <strong>tirth.patel</strong> logged into workstation <em>WKSTN-FIN-08</em>.
+                  </p>
+                  <ul class="explainer-bullets">
+                    <li><strong>What is it doing:</strong> It captures the login event using Windows machine codes — like event <code>4624</code> (login succeeded), <code>logonType=10</code> (remote connection), and IP <code>192.168.10.144</code>.</li>
+                    <li><strong>What is it for:</strong> Government regulations and court evidence require keeping the <em>100% untouched original log</em> so no one can ever accuse the company of altering or faking evidence.</li>
+                    <li><strong>How this console helps:</strong> Our system locks this original log permanently in a tamper-proof vault, while translating it into the clean, human-readable format on the right!</li>
+                  </ul>
+                </div>
+
+                <div class="raw-code-body" id="rawLogBody">
+                  <div class="raw-line" id="rawLine-eventCode" data-match="ocsf-code"><span class="line-no">01</span><span class="raw-token-key">CEF:0|Microsoft|Windows|2026.1|4624|</span><span class="raw-token-val">An account was successfully logged on</span></div>
+                  <div class="raw-line" id="rawLine-time" data-match="ocsf-time"><span class="line-no">02</span><span class="raw-token-key">rt=</span><span class="raw-token-val">2026-09-08T00:12:44.914Z</span> <span class="raw-token-key">deviceExternalId=</span><span class="raw-token-val">DC01-PROD</span></div>
+                  <div class="raw-line" id="rawLine-user" data-match="ocsf-user"><span class="line-no">03</span><span class="raw-token-key">suser=</span><span class="raw-token-val">tirth.patel</span> <span class="raw-token-key">suid=</span><span class="raw-token-val">S-1-5-21-3979</span></div>
+                  <div class="raw-line" id="rawLine-domain" data-match="ocsf-domain"><span class="line-no">04</span><span class="raw-token-key">sdomain=</span><span class="raw-token-val">CORP.DOM</span> <span class="raw-token-key">logonGuid=</span><span class="raw-token-val">{4A8B9C2D-E1F0}</span></div>
+                  <div class="raw-line" id="rawLine-logonType" data-match="ocsf-logonType"><span class="line-no">05</span><span class="raw-token-key">logonType=</span><span class="raw-token-val">10 (RemoteInteractive)</span></div>
+                  <div class="raw-line" id="rawLine-srcIp" data-match="ocsf-ip"><span class="line-no">06</span><span class="raw-token-key">src=</span><span class="raw-token-val">192.168.10.144</span> <span class="raw-token-key">spt=</span><span class="raw-token-val">54210</span></div>
+                  <div class="raw-line" id="rawLine-workstation" data-match="ocsf-workstation"><span class="line-no">07</span><span class="raw-token-key">shost=</span><span class="raw-token-val">WKSTN-FIN-08</span> <span class="raw-token-key">proto=</span><span class="raw-token-val">TCP</span></div>
+                  <div class="raw-line" id="rawLine-hash" data-match="ocsf-hash"><span class="line-no">08</span><span class="raw-token-key">ledger_hash=</span><span class="raw-token-val">0x3f7a81c2e9b0d4...c89e</span></div>
+                </div>
+              </div>
+
+              <!-- Center: Connecting SVG Threads Canvas -->
+              <svg class="trace-threads-canvas" id="traceThreadsCanvas" aria-hidden="true"></svg>
+
+              <!-- Right: OCSF Normalized JSON Panel -->
+              <div class="trace-panel trace-panel-ocsf">
+                <div class="trace-panel-head">
+                  <span class="panel-format-tag">
+                    <!-- JSON Format Glyph (14x14 monoline, 1.5px stroke) -->
+                    <svg class="format-glyph format-glyph-json" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="JSON format glyph">
+                      <path d="M4.5 2.5c-.8 0-1.5.7-1.5 1.5v1.5c0 .8-.7 1.5-1.5 1.5.8 0 1.5.7 1.5 1.5v1.5c0 .8.7 1.5 1.5 1.5"></path>
+                      <path d="M9.5 2.5c.8 0 1.5.7 1.5 1.5v1.5c0 .8.7 1.5 1.5 1.5-.8 0-1.5.7-1.5 1.5v1.5c0 .8-.7 1.5-1.5 1.5"></path>
+                    </svg>
+                    Clean Standard Format (<span class="term-explain" data-term="ocsf">OCSF</span> JSON)
+                  </span>
+                  <div class="panel-meta-actions">
+                    <span class="panel-meta-tag">Event Category: User Login (1001)</span>
+                    <button type="button" class="panel-info-btn" id="btnOcsfLogInfo" title="Click for a quick simple explanation of what this clean standard log is and why it matters" aria-label="Explain clean standard log">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
+                      <span>Explain Format</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Expandable Plain-English Explanation Card -->
+                <div class="panel-explainer-card" id="ocsfLogInfoCard" style="display: none;">
+                  <div class="explainer-card-header">
+                    <span class="explainer-card-badge">💡 SIMPLE EXPLANATION: CLEAN UNIVERSAL STANDARD</span>
+                    <button type="button" class="explainer-close-btn" id="btnCloseOcsfInfo" title="Close explanation">✕</button>
+                  </div>
+                  <p class="explainer-main-text">
+                    <strong>What is this:</strong> This is the exact same event from the left, but translated into a single universal standard (<span class="term-explain" data-term="ocsf">OCSF</span> JSON) that anyone or any computer tool can read easily.
+                  </p>
+                  <ul class="explainer-bullets">
+                    <li><strong>What is it doing:</strong> It replaces weird vendor codes with clear plain labels — like <code>"logon_type": "RemoteInteractive"</code> and <code>"user.name": "tirth.patel"</code>.</li>
+                    <li><strong>What is it for:</strong> When an enterprise runs Windows PCs, Macs, Linux servers, and AWS clouds, searching 4 different formats is slow and frustrating. This makes all devices speak <em>one shared language</em>.</li>
+                    <li><strong>Visual proof:</strong> Move your mouse over any line to see glowing laser threads that visually prove every clean word links 100% back to the original raw proof.</li>
+                  </ul>
+                </div>
+                <div class="ocsf-code-body" id="ocsfLogBody">
+                  <div class="ocsf-row" id="ocsf-code" data-match="rawLine-eventCode">
+                    <span class="ocsf-key">"activity_id": <span class="ocsf-val">1</span> <span class="raw-token-key">// Logon</span></span>
+                    <span class="ocsf-confidence-chip">100%</span>
+                  </div>
+                  <div class="ocsf-row" id="ocsf-time" data-match="rawLine-time">
+                    <span class="ocsf-key">"time": <span class="ocsf-val">1788823458914</span></span>
+                    <span class="ocsf-confidence-chip">100%</span>
+                  </div>
+                  <div class="ocsf-row" id="ocsf-user" data-match="rawLine-user">
+                    <span class="ocsf-key">"user.name": <span class="ocsf-val">"tirth.patel"</span></span>
+                    <span class="ocsf-confidence-chip">99.9%</span>
+                  </div>
+                  <div class="ocsf-row" id="ocsf-domain" data-match="rawLine-domain">
+                    <span class="ocsf-key">"user.domain": <span class="ocsf-val">"CORP.DOM"</span></span>
+                    <span class="ocsf-confidence-chip">99.8%</span>
+                  </div>
+                  <div class="ocsf-row" id="ocsf-logonType" data-match="rawLine-logonType">
+                    <span class="ocsf-key">"logon_type": <span class="ocsf-val">"RemoteInteractive"</span></span>
+                    <span class="ocsf-confidence-chip">99.4%</span>
+                  </div>
+                  <div class="ocsf-row" id="ocsf-ip" data-match="rawLine-srcIp">
+                    <span class="ocsf-key">"src_endpoint.ip": <span class="ocsf-val">"192.168.10.144"</span></span>
+                    <span class="ocsf-confidence-chip">100%</span>
+                  </div>
+                  <div class="ocsf-row" id="ocsf-workstation" data-match="rawLine-workstation">
+                    <span class="ocsf-key">"src_endpoint.hostname": <span class="ocsf-val">"WKSTN-FIN-08"</span></span>
+                    <span class="ocsf-confidence-chip">99.6%</span>
+                  </div>
+                  <div class="ocsf-row" id="ocsf-hash" data-match="rawLine-hash">
+                    <span class="ocsf-key">"ledger.parent_hash": <span class="ocsf-val">"0x3f7a...c89e"</span></span>
+                    <span class="ocsf-confidence-chip">IMMUTABLE</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- ====================================================================
+             VIEW 03: AI INTEGRATOR ONBOARDING WIZARD
+             ==================================================================== -->
+        <div class="view-panel" id="view-wizard">
+          <section class="view-hero-editorial">
+            <span class="view-badge">Pipeline Stage 03 · AI Copilot</span>
+            <h1 class="view-editorial-title">AI Log Translator <em>(Auto-Onboarding).</em></h1>
+            <p class="view-editorial-desc">
+              Connect any new software or device. Our AI reads a quick sample, figures out what each field means, and translates it into clean universal format (<span class="term-explain" data-term="ocsf">OCSF</span>). Once approved, it is locked into the permanent record book.
+            </p>
+            <p class="explain-subtitle">
+              <span class="explain-icon-tag" aria-hidden="true">
+                <svg class="explain-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 4V2m0 16v-2m7-5h-2M6 13H4m14.5-6.5L17 8m-9.5 9.5L6 19M17 17l1.5 1.5M6 7l1.5 1.5"></path>
+                  <path d="M12 7l1.5 3.5L17 12l-3.5 1.5L12 17l-1.5-3.5L7 12l3.5-1.5z"></path>
+                </svg>
+              </span>
+              <span class="explain-text">When we see a brand-new type of log we've never seen before, AI reads a sample and figures out how to understand it — instead of a person spending weeks writing rules by hand.</span>
+            </p>
+          </section>
+
+          <!-- Wizard Step Navigation Tabs -->
+          <div class="wizard-steps-pill-bar">
+            <div class="wizard-step-tab active" data-wizard-step="1">
+              <span class="step-num">01</span>
+              <span class="step-label">Feed in Sample Data</span>
+            </div>
+            <div class="wizard-step-tab" data-wizard-step="2">
+              <span class="step-num">02</span>
+              <span class="step-label">AI Proposes Translation</span>
+            </div>
+            <div class="wizard-step-tab" data-wizard-step="3">
+              <span class="step-num">03</span>
+              <span class="step-label">Approve & Save Rule</span>
+            </div>
+          </div>
+
+          <!-- Wizard Step 1: Dropzone & Presets -->
+          <div class="wizard-step-card glass-card-3d active" id="wizardStep1">
+            <h3 class="wizard-card-title">Step 1: Feed in Sample Data</h3>
+            <p class="wizard-card-sub">Drag and drop any log file or pick a popular example below.</p>
+
+            <div class="log-dropzone" id="logDropzone">
+              <div class="dropzone-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </div>
+              <div class="dropzone-text">
+                <span class="dropzone-primary">Drag your log file here (.log, .json, .syslog, .csv)</span>
+                <span class="dropzone-sub">or click to choose from your computer (max 25MB)</span>
+              </div>
+            </div>
+
+            <div class="preset-sources-wrap">
+              <span class="preset-title">Or test with one of these popular examples:</span>
+              <div class="preset-buttons">
+                <button class="preset-chip active" data-preset="pan-os">Palo Alto Firewall</button>
+                <button class="preset-chip" data-preset="cloudtrail">AWS Cloud Activity</button>
+                <button class="preset-chip" data-preset="crowdstrike">CrowdStrike Antivirus</button>
+                <button class="preset-chip" data-preset="win-event">Windows Login Log</button>
+              </div>
+            </div>
+
+            <div class="wizard-action-row">
+              <button class="btn-pill active" id="btnGoToStep2">
+                <span>Let AI Read Sample & Propose Translation →</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Wizard Step 2: Mapping Proposal & Diff Viewer -->
+          <div class="wizard-step-card glass-card-3d" id="wizardStep2" style="display: none;">
+            <h3 class="wizard-card-title">Step 2: AI-Proposed Field Translations</h3>
+            <p class="wizard-card-sub">Review how each original field maps to our universal standard. High confidence matches are highlighted.</p>
+
+            <div class="diff-viewer-container" id="wizardDiffContainer">
+              <!-- SVG Connecting Thread Overlay (Feature 2: Dynamic Copper Draw-On) -->
+              <svg class="wizard-threads-overlay" id="wizardThreadsOverlay" aria-hidden="true">
+                <defs>
+                  <linearGradient id="wizardCopperThreadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ae9357" />
+                    <stop offset="40%" stop-color="#fff0cc" />
+                    <stop offset="70%" stop-color="#ae9357" />
+                    <stop offset="100%" stop-color="rgba(174, 147, 87, 0.15)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <!-- Left: Raw Source Schema Pane -->
+              <div class="diff-pane" id="wizardDiffPaneRaw">
+                <span class="diff-pane-title">What the Device Sent (Raw Log)</span>
+                <div class="diff-code-body">
+                  <div class="diff-line" id="wraw-line-1"><span class="line-no">01</span><span class="code-key">src_ip:</span> <span class="code-val">"192.168.10.144"</span></div>
+                  <div class="diff-line" id="wraw-line-2"><span class="line-no">02</span><span class="code-key">dst_port:</span> <span class="code-val">443</span></div>
+                  <div class="diff-line" id="wraw-line-3"><span class="line-no">03</span><span class="code-key">act:</span> <span class="code-val">"allow"</span></div>
+                  <div class="diff-line" id="wraw-line-4"><span class="line-no">04</span><span class="code-key">proto:</span> <span class="code-val">"tcp"</span></div>
+                  <div class="diff-line" id="wraw-line-5"><span class="line-no">05</span><span class="code-key">threat_id:</span> <span class="code-val">"<span class="term-explain" data-term="cve">CVE-2024-3400</span>"</span></div>
+                </div>
+              </div>
+
+              <!-- Center: Transition Pivot / Arrow -->
+              <div class="diff-arrow-wrapper">
+                <div class="diff-arrow" id="wizardDiffArrow">→</div>
+              </div>
+
+              <!-- Right: Normalized OCSF Target Pane with Per-Field Confidence Bars (Feature 1) -->
+              <div class="diff-pane" id="wizardDiffPaneOcsf">
+                <span class="diff-pane-title">Universal Clean Meaning (<span class="term-explain" data-term="ocsf">OCSF</span> Standard)</span>
+                <div class="diff-code-body">
+                  <!-- Row 1 (98.4% Copper) -->
+                  <div class="diff-row-unit">
+                    <div class="diff-line diff-highlight" id="wocsf-line-1">
+                      <span class="line-no">01</span>
+                      <span class="code-key">"src_endpoint.ip":</span> 
+                      <span class="code-val">"192.168.10.144"</span>
+                    </div>
+                    <div class="diff-confidence-bar-track" data-tooltip="98.4% — AI matched original IP address to standard source endpoint">
+                      <div class="diff-confidence-bar-fill" data-target-width="98.4%" style="--bar-color: #cc9166; width: 0%;"></div>
+                    </div>
+                  </div>
+
+                  <!-- Row 2 (99.1% Copper) -->
+                  <div class="diff-row-unit">
+                    <div class="diff-line diff-highlight" id="wocsf-line-2">
+                      <span class="line-no">02</span>
+                      <span class="code-key">"dst_endpoint.port":</span> 
+                      <span class="code-val">443</span>
+                    </div>
+                    <div class="diff-confidence-bar-track" data-tooltip="99.1% — Exact match for destination port number">
+                      <div class="diff-confidence-bar-fill" data-target-width="99.1%" style="--bar-color: #cc9166; width: 0%;"></div>
+                    </div>
+                  </div>
+
+                  <!-- Row 3 (96.5% Copper) -->
+                  <div class="diff-row-unit">
+                    <div class="diff-line diff-highlight" id="wocsf-line-3">
+                      <span class="line-no">03</span>
+                      <span class="code-key">"disposition_id":</span> 
+                      <span class="code-val">1 // Allowed</span>
+                    </div>
+                    <div class="diff-confidence-bar-track" data-tooltip="96.5% — &quot;allow&quot; translated to standard status &quot;Allowed&quot;">
+                      <div class="diff-confidence-bar-fill" data-target-width="96.5%" style="--bar-color: #cc9166; width: 0%;"></div>
+                    </div>
+                  </div>
+
+                  <!-- Row 4 (61.2% Steel Low Confidence with inline Review pill) -->
+                  <div class="diff-row-unit">
+                    <div class="diff-line diff-highlight low-confidence-row" id="wocsf-line-4">
+                      <span class="line-no">04</span>
+                      <span class="code-key">"connection_info.protocol_name":</span> 
+                      <span class="code-val">"TCP"</span>
+                      <button class="btn-review-pill" id="btnReviewRow4" title="Review mapping AI proposal">Check</button>
+                    </div>
+                    <div class="diff-confidence-bar-track" data-tooltip="61.2% — Needs human check: protocol detected as TCP">
+                      <div class="diff-confidence-bar-fill" data-target-width="61.2%" style="--bar-color: #777a88; width: 0%;"></div>
+                    </div>
+                  </div>
+
+                  <!-- Row 5 (97.8% Copper) -->
+                  <div class="diff-row-unit">
+                    <div class="diff-line diff-highlight" id="wocsf-line-5">
+                      <span class="line-no">05</span>
+                      <span class="code-key">"vulnerabilities[0].cve.uid":</span> 
+                      <span class="code-val">"<span class="term-explain" data-term="cve">CVE-2024-3400</span>"</span>
+                    </div>
+                    <div class="diff-confidence-bar-track" data-tooltip="97.8% — Known vulnerability ID CVE-2024-3400 verified">
+                      <div class="diff-confidence-bar-fill" data-target-width="97.8%" style="--bar-color: #cc9166; width: 0%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="wizard-action-row">
+              <button class="btn-pill" id="btnBackToStep1">← Back</button>
+              <button class="btn-pill active" id="btnGoToStep3">Proceed to Final Approval →</button>
+            </div>
+          </div>
+
+          <!-- Wizard Step 3: Wax-Seal Stamp Confirmation -->
+          <div class="wizard-step-card glass-card-3d" id="wizardStep3" style="display: none;">
+            <h3 class="wizard-card-title">Step 3: Approve & Lock in the Rule</h3>
+            <p class="wizard-card-sub">Once you stamp this translation, it is permanently saved and applied to all future logs from this device.</p>
+
+            <div class="wax-seal-showcase">
+              <div class="seal-prompt-box">
+                <span class="seal-prompt-badge">PERMANENT APPROVED TRANSLATION</span>
+                <h4 class="seal-prompt-headline">Palo Alto Firewall → Universal Format (Network Activity)</h4>
+                <p class="seal-prompt-meta">AI Accuracy: 99.8% · All fields mapped · Tamper-proof digital seal ready</p>
+              </div>
+
+              <div class="seal-action-center">
+                <!-- Signature Wax Seal Confirmation Button -->
+                <button class="btn-wax-seal" id="btnWizardWaxSeal">
+                  <div class="seal-icon-wrap">
+                    <svg class="seal-svg-ring" viewBox="0 0 24 24">
+                      <circle class="seal-circle-track" cx="12" cy="12" r="9.5"></circle>
+                      <circle class="seal-circle-draw" cx="12" cy="12" r="9.5"></circle>
+                    </svg>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    </svg>
+                  </div>
+                  <span id="wizardSealBtnText">Stamp & Save Permanently</span>
+                  <div class="seal-stamp-animation"></div>
+                </button>
+              </div>
+            </div>
+
+            <div class="wizard-action-row">
+              <button class="btn-pill" id="btnBackToStep2">← Review Translation</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             VIEW 04: DRIFT DETECTION PANEL
+             ==================================================================== -->
+        <div class="view-panel" id="view-drift">
+          <section class="view-hero-editorial">
+            <span class="view-badge">Pipeline Stage 03 · Telemetry Watch</span>
+            <h1 class="view-editorial-title">Format Change Watch & <em>Update Monitor.</em></h1>
+            <p class="view-editorial-desc">
+              Monitors all connected systems 24/7. When a company updates their software and changes log formats without warning, our AI catches it immediately and automatically drafts an updated translation.
+            </p>
+            <p class="explain-subtitle">
+              <span class="explain-icon-tag" aria-hidden="true">
+                <svg class="explain-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+              </span>
+              <span class="explain-text">If a device's log format quietly changes (like after an automatic software update), we catch it automatically before any security alerts break.</span>
+            </p>
+          </section>
+
+          <!-- Drift Timeline Chart Card -->
+          <div class="drift-chart-card glass-card-3d">
+            <div class="drift-chart-header">
+              <div class="drift-title-group">
+                <span class="drift-badge">24-Hour Monitor</span>
+                <h3 class="drift-title">Translation Health per Device (Last 24 Hours)</h3>
+              </div>
+              <div class="drift-controls">
+                <span class="drift-slider-label">Alert Sensitivity:</span>
+                <div class="custom-range-track" id="driftSlider" style="width: 140px;">
+                  <div class="custom-range-progress" id="driftProgress" style="width: 82%;"></div>
+                  <div class="custom-range-thumb" id="driftThumb" style="left: 82%;"></div>
+                </div>
+                <span class="drift-val-text" id="driftValText">82%</span>
+              </div>
+            </div>
+
+            <div class="drift-svg-wrapper">
+              <svg class="drift-timeline-svg" viewBox="0 0 900 160" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="driftAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#cc9166" stop-opacity="0.25" />
+                    <stop offset="100%" stop-color="#cc9166" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+                <!-- Grid Lines -->
+                <line x1="0" y1="40" x2="900" y2="40" stroke="var(--hairline)" />
+                <line x1="0" y1="80" x2="900" y2="80" stroke="var(--hairline)" />
+                <line x1="0" y1="120" x2="900" y2="120" stroke="var(--hairline)" />
+
+                <!-- Healthy Source Line (Palo Alto) -->
+                <path d="M 0,22 Q 200,18 450,20 T 900,16" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" />
+
+                <!-- Drifting Source Area & Line (Okta SSO v2) -->
+                <path d="M 0,26 Q 250,24 500,32 L 620,84 L 700,98 L 780,92 L 900,88 L 900,160 L 0,160 Z" fill="url(#driftAreaGrad)" />
+                <path d="M 0,26 Q 250,24 500,32 L 620,84 L 700,98 L 780,92 L 900,88" fill="none" stroke="#cc9166" stroke-width="2.5" />
+
+                <!-- Drift Threshold Line -->
+                <line x1="0" y1="75" x2="900" y2="75" stroke="rgba(204, 145, 102, 0.5)" stroke-dasharray="6 4" stroke-width="1" />
+                <text x="760" y="68" fill="var(--accent-copper)" font-size="12" font-weight="600" font-family="JetBrains Mono">SAFETY THRESHOLD 90%</text>
+
+                <!-- Drift Incident Marker -->
+                <circle cx="620" cy="84" r="5" fill="#cc9166" />
+                <circle cx="620" cy="84" r="9" fill="none" stroke="#cc9166" opacity="0.6" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Active Drift Events List -->
+          <div class="drift-alerts-container">
+            <h4 class="drift-section-heading">Active Format Changes Needing Attention</h4>
+
+            <div class="drift-row glass-card-3d drift-alerting" id="driftRowOkta">
+              <div class="drift-row-status">
+                <span class="drift-pulse-icon"></span>
+                <span class="drift-source-name">Okta Login Service · Recent Software Update Changed Format</span>
+              </div>
+              <div class="drift-row-stats">
+                <span class="drift-stat-drop">Translation Success: 87.2% (dropped by 12.8%)</span>
+                <span class="drift-stat-unmapped">New unexpected field: <code>event.target.authenticator_enrollment</code> (Passkey login)</span>
+              </div>
+              <div class="drift-row-actions">
+                <button class="btn-pill" id="btnReviewDrift">Review AI's New Translation</button>
+              </div>
+            </div>
+
+            <div class="drift-row glass-card-3d">
+              <div class="drift-row-status">
+                <span class="drift-ok-icon">✓</span>
+                <span class="drift-source-name">Palo Alto Firewall · Normal Stream</span>
+              </div>
+              <div class="drift-row-stats">
+                <span class="drift-stat-good">Translation Success: 99.98% (Perfect)</span>
+                <span class="drift-stat-sub">Last checked: 4 minutes ago</span>
+              </div>
+              <div class="drift-row-actions">
+                <span class="drift-status-badge">HEALTHY</span>
+              </div>
+            </div>
+
+            <div class="drift-row glass-card-3d">
+              <div class="drift-row-status">
+                <span class="drift-ok-icon">✓</span>
+                <span class="drift-source-name">Amazon AWS Cloud Activity · Network Stream</span>
+              </div>
+              <div class="drift-row-stats">
+                <span class="drift-stat-good">Translation Success: 100.00% (Perfect)</span>
+                <span class="drift-stat-sub">Last checked: 12 seconds ago</span>
+              </div>
+              <div class="drift-row-actions">
+                <span class="drift-status-badge">HEALTHY</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ANOMALY DETECTION STRIP (Section 4.5 & Differentiator 6) -->
+          <div class="anomaly-detection-card glass-card-3d" aria-label="Anomaly Detection Strip">
+            <div class="anomaly-head">
+              <div class="anomaly-title-group">
+                <div class="anomaly-badge-row">
+                  <span class="drift-badge"><span class="term-explain" data-term="isolation-forest">Isolation Forest</span> Model IF-891</span>
+                  <span class="anomaly-tag">Watching Last 40 Events</span>
+                </div>
+                <h4 class="anomaly-title">Live Strange Behavior Radar</h4>
+                <p class="anomaly-sub">AI constantly looks for unusual patterns in network traffic. Strange or suspicious events glow with a soft amber circle.</p>
+              </div>
+              <div class="anomaly-legend">
+                <span class="legend-chip"><span class="dot-sample dot-nominal"></span> Normal Behavior (&lt;0.65)</span>
+                <span class="legend-chip"><span class="dot-sample dot-anomaly"></span> Suspicious Outlier (&ge;0.85)</span>
+              </div>
+            </div>
+
+            <div class="anomaly-strip-wrapper">
+              <div class="anomaly-strip-track" id="anomalyDotsTrack" role="region" aria-label="Anomaly Dots Stream">
+                <!-- 40 circular dots dynamically populated and rolled by app.js -->
+              </div>
+              <!-- Floating Tooltip Card -->
+              <div class="anomaly-popover-card" id="anomalyPopoverCard" style="display: none;">
+                <div class="popover-badge">SUSPICIOUS EVENT DETECTED</div>
+                <div class="popover-event-type" id="popoverEventType">Failed Windows Login (Wrong Password)</div>
+                <div class="popover-score-row">
+                  <span class="popover-label">Weirdness Score:</span>
+                  <span class="popover-score-val" id="popoverScoreVal">94.2% Suspicious</span>
+                </div>
+                <div class="popover-contributors" id="popoverContributors">
+                  Why flagged: Unusual port (4444) used in the middle of the night (03:14 AM)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             VIEW 05: HASH-CHAIN / TAMPER-EVIDENCE FORENSIC VIEWER
+             ==================================================================== -->
+        <div class="view-panel" id="view-hashchain">
+          <section class="view-hero-editorial">
+            <span class="view-badge">Pipeline Stage 06 · Cryptographic Audit</span>
+            <h1 class="view-editorial-title">Tamper-Proof Record Book <em>(Cryptographic Proof).</em></h1>
+            <p class="view-editorial-desc">
+              Every bundle of cleaned logs is digitally sealed and chained to the previous one, just like pages in a tamper-evident ledger. Test what happens if a hacker tries to secretly change past records.
+            </p>
+            <p class="explain-subtitle">
+              <span class="explain-icon-tag" aria-hidden="true">
+                <svg class="explain-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </span>
+              <span class="explain-text">Every log is sealed with an unbreakable digital fingerprint the second it arrives. If anyone ever tries to alter an old log to hide their tracks, the entire chain visibly breaks and sounds an alarm.</span>
+            </p>
+          </section>
+
+          <!-- Tamper Simulation Control Bar -->
+          <div class="tamper-control-card glass-card-3d">
+            <div class="tamper-control-info">
+              <span class="tamper-control-title">Test Hacker Tamper Attack</span>
+              <p class="tamper-control-sub">Click the button to secretly change one byte of data in past Block #891,240 to see how the system catches it.</p>
+            </div>
+            <div class="tamper-control-btns">
+              <button class="btn-pill" id="btnSimulateTamper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                </svg>
+                <span id="tamperBtnText">Simulate Hacker Tampering Old Log</span>
+              </button>
+              <button class="btn-pill active" id="btnHealChain" style="display: none;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                <span>Auto-Repair from Untampered Backup</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Chained Ledger Links Visualizer -->
+          <div class="chained-ledger-visualizer" id="chainedLedgerVisualizer">
+            <!-- Block 891,241 -->
+            <div class="ledger-chain-block glass-card-3d" id="chainNode891">
+              <div class="chain-block-top">
+                <span class="chain-block-num">BLOCK #891,241 (LATEST)</span>
+                <span class="chain-seal-tag" id="statusBadge891">UNTOUCHED & SEALED</span>
+              </div>
+              <div class="chain-block-hashes">
+                <div class="hash-item"><span class="hash-lbl">Current Fingerprint:</span> <code class="hash-str">0x9a8e21c0e34f...d24b7a</code></div>
+                <div class="hash-item"><span class="hash-lbl">Previous Fingerprint:</span> <code class="hash-str" id="parentHash891">0x4f12a9b3c801...e81c3d</code></div>
+              </div>
+              <div class="chain-block-footer">
+                <span>1,024 Logs Locked Together</span>
+                <span>Master Seal: Verified</span>
+              </div>
+            </div>
+
+            <!-- Connecting Chain Link 1 -->
+            <div class="chain-connector-link" id="connectorLink891">
+              <div class="connector-line"></div>
+              <div class="connector-lock">🔒</div>
+              <!-- Signature 1px Fracture Crack Line -->
+              <div class="fracture-crack-line" id="fractureCrackLine"></div>
+            </div>
+
+            <!-- Block 891,240 (Target of Tamper Simulation) -->
+            <div class="ledger-chain-block glass-card-3d" id="chainNode890">
+              <div class="chain-block-top">
+                <span class="chain-block-num">BLOCK #891,240 (PAST LOGS)</span>
+                <span class="chain-seal-tag" id="statusBadge890">UNTOUCHED & SEALED</span>
+              </div>
+              <div class="chain-block-hashes">
+                <div class="hash-item"><span class="hash-lbl">Current Fingerprint:</span> <code class="hash-str" id="blockHash890">0x4f12a9b3c801...e81c3d</code></div>
+                <div class="hash-item"><span class="hash-lbl">Previous Fingerprint:</span> <code class="hash-str">0xb73ac410982f...912f04</code></div>
+              </div>
+              <div class="chain-block-footer">
+                <span>1,024 Logs Locked Together</span>
+                <span>Master Seal: Verified</span>
+              </div>
+            </div>
+
+            <!-- Connecting Chain Link 2 -->
+            <div class="chain-connector-link">
+              <div class="connector-line"></div>
+              <div class="connector-lock">🔒</div>
+            </div>
+
+            <!-- Block 891,239 -->
+            <div class="ledger-chain-block glass-card-3d" id="chainNode889">
+              <div class="chain-block-top">
+                <span class="chain-block-num">BLOCK #891,239 (OLDER LOGS)</span>
+                <span class="chain-seal-tag">UNTOUCHED & SEALED</span>
+              </div>
+              <div class="chain-block-hashes">
+                <div class="hash-item"><span class="hash-lbl">Current Fingerprint:</span> <code class="hash-str">0xb73ac410982f...912f04</code></div>
+                <div class="hash-item"><span class="hash-lbl">Previous Fingerprint:</span> <code class="hash-str">0x1109ff8271ea...aa4419</code></div>
+              </div>
+              <div class="chain-block-footer">
+                <span>1,024 Logs Locked Together</span>
+                <span>Master Seal: Verified</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====================================================================
+             VIEW 06: CORRELATION ENGINE ENTITY GRAPH
+             ==================================================================== -->
+        <div class="view-panel" id="view-graph">
+          <section class="view-hero-editorial">
+            <span class="view-badge">Cross-Source Intelligence</span>
+            <h1 class="view-editorial-title">Attack Story Map: <em>Connecting the Dots.</em></h1>
+            <p class="view-editorial-desc">
+              Connects clues scattered across different laptops, servers, and firewalls. Follow the glowing path to see exactly how an intruder broke in and moved through the network.
+            </p>
+            <p class="explain-subtitle">
+              <span class="explain-icon-tag" aria-hidden="true">
+                <svg class="explain-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="6" r="3"></circle>
+                  <circle cx="18" cy="6" r="3"></circle>
+                  <circle cx="18" cy="18" r="3"></circle>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"></line>
+                  <line x1="8.5" y1="6" x2="15.5" y2="6"></line>
+                  <line x1="6" y1="8.5" x2="6" y2="15.5"></line>
+                </svg>
+              </span>
+              <span class="explain-text">Instead of making security guards read 10,000 separate alerts, this connects the dots automatically to show the full story of what the attacker did.</span>
+            </p>
+          </section>
+
+          <!-- Graph Workspace Card -->
+          <div class="graph-workspace-card glass-card-3d">
+            <div class="graph-toolbar">
+              <div class="graph-legend">
+                <span class="legend-item"><span class="legend-dot threat"></span>Attacker / Hacker</span>
+                <span class="legend-item"><span class="legend-dot host"></span>Company Computer</span>
+                <span class="legend-item"><span class="legend-dot user"></span>User Account</span>
+                <span class="legend-item"><span class="legend-dot process"></span>Malicious Software</span>
+              </div>
+              <div class="graph-actions">
+                <button class="btn-pill" id="btnTraceAttack">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <span>Play Attack Step-by-Step</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- SVG Graph Container -->
+            <div class="graph-canvas-container" id="graphCanvasContainer">
+              <svg class="correlation-graph-svg" id="correlationGraphSvg" viewBox="0 0 900 480">
+                <defs>
+                  <!-- Gilded Attack Path Gradient -->
+                  <linearGradient id="attackPathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#cc9166" />
+                    <stop offset="50%" stop-color="#fff0cc" />
+                    <stop offset="100%" stop-color="#cc9166" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Connections -->
+                <g class="graph-edges">
+                  <line x1="140" y1="240" x2="320" y2="160" class="graph-edge edge-attack" id="edge1" />
+                  <line x1="320" y1="160" x2="520" y2="120" class="graph-edge edge-attack" id="edge2" />
+                  <line x1="520" y1="120" x2="740" y2="200" class="graph-edge edge-attack" id="edge3" />
+                  <line x1="320" y1="160" x2="420" y2="340" class="graph-edge" />
+                  <line x1="420" y1="340" x2="680" y2="360" class="graph-edge" />
+                  <line x1="520" y1="120" x2="680" y2="360" class="graph-edge" />
+                </g>
+
+                <!-- Nodes -->
+                <g class="graph-nodes">
+                  <!-- Threat Actor Node -->
+                  <g class="graph-node-group" data-node="threat" transform="translate(140, 240)">
+                    <circle class="node-circle threat-circle" r="24" />
+                    <text class="node-icon" y="5" text-anchor="middle">⚡</text>
+                    <text class="node-text" y="38" text-anchor="middle">IP: 198.51.100.42</text>
+                    <text class="node-sub" y="50" text-anchor="middle">External Hacker</text>
+                  </g>
+
+                  <!-- Compromised Ingress Workstation -->
+                  <g class="graph-node-group" data-node="host1" transform="translate(320, 160)">
+                    <circle class="node-circle host-circle" r="22" />
+                    <text class="node-icon" y="5" text-anchor="middle">💻</text>
+                    <text class="node-text" y="36" text-anchor="middle">WKSTN-FIN-08</text>
+                    <text class="node-sub" y="48" text-anchor="middle">Target Laptop (Finance)</text>
+                  </g>
+
+                  <!-- Compromised Credential -->
+                  <g class="graph-node-group" data-node="user" transform="translate(520, 120)">
+                    <circle class="node-circle user-circle" r="22" />
+                    <text class="node-icon" y="5" text-anchor="middle">👤</text>
+                    <text class="node-text" y="36" text-anchor="middle">tirth.patel</text>
+                    <text class="node-sub" y="48" text-anchor="middle">Stolen User Account</text>
+                  </g>
+
+                  <!-- Target Domain Controller -->
+                  <g class="graph-node-group" data-node="target" transform="translate(740, 200)">
+                    <circle class="node-circle threat-circle target-circle" r="26" />
+                    <text class="node-icon" y="5" text-anchor="middle">🎯</text>
+                    <text class="node-text" y="40" text-anchor="middle">DC01-PROD.CORP</text>
+                    <text class="node-sub" y="52" text-anchor="middle">Main Office Server</text>
+                  </g>
+
+                  <!-- Secondary Lateral Node -->
+                  <g class="graph-node-group" data-node="proc" transform="translate(420, 340)">
+                    <circle class="node-circle proc-circle" r="18" />
+                    <text class="node-icon" y="4" text-anchor="middle">⚙️</text>
+                    <text class="node-text" y="32" text-anchor="middle">mimikatz.exe</text>
+                    <text class="node-sub" y="44" text-anchor="middle">Password Theft Tool</text>
+                  </g>
+
+                  <!-- Secondary Target -->
+                  <g class="graph-node-group" data-node="host2" transform="translate(680, 360)">
+                    <circle class="node-circle host-circle" r="18" />
+                    <text class="node-icon" y="4" text-anchor="middle">🗄️</text>
+                    <text class="node-text" y="32" text-anchor="middle">SQL-CLUSTER-02</text>
+                    <text class="node-sub" y="44" text-anchor="middle">Database Vault</text>
+                  </g>
+                </g>
+              </svg>
+
+              <!-- Node Inspector Popover Drawer -->
+              <div class="node-inspector-drawer" id="nodeInspectorDrawer">
+                <div class="drawer-header">
+                  <span class="drawer-badge" id="drawerBadge">CLICKED ITEM DETAILS</span>
+                  <button class="btn-close-drawer" id="btnCloseDrawer">&times;</button>
+                </div>
+                <h4 class="drawer-title" id="drawerTitle">Clue Inspector</h4>
+                <p class="drawer-desc" id="drawerDesc">Click any computer or hacker icon on the map to see its connected logs and risk.</p>
+                <div class="drawer-stats" id="drawerStats">
+                  <div class="d-stat"><span class="d-lbl">Connected Logs:</span> <span class="d-val" id="dCorrelated">1,402</span></div>
+                  <div class="d-stat"><span class="d-lbl">Confidence:</span> <span class="d-val" id="dConfidence">99.8%</span></div>
+                  <div class="d-stat"><span class="d-lbl">Risk Level:</span> <span class="d-val" id="dRisk" style="color:#ff6b6b;">8.9 / 10</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Emergency Forensic Freeze Status Overlay Banner (DEFCON 1 Mode) -->
+  <div class="freeze-banner" id="freezeBanner" aria-hidden="true">
+    <div class="freeze-content">
+      <div class="freeze-beacon"></div>
+      <div class="freeze-text-wrap">
+        <span class="freeze-tag">EMERGENCY SECURITY FREEZE ACTIVE · ALL LOGS FROZEN</span>
+        <span class="freeze-sub">Incoming log stream safely paused · Digital fingerprint sealed: 0x9a8e21c0...d24b · No records can be deleted or changed</span>
+      </div>
+      <button class="btn-thaw" id="btnThaw">Resume Live Stream</button>
+    </div>
+  </div>
+
+  <!-- Interactive Cryptographic Merkle Tree / ZKP Inspector Modal -->
+  <div class="modal-backdrop" id="merkleModalBackdrop" aria-hidden="true">
+    <div class="merkle-modal glass-card-3d">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-tag">DIGITAL FINGERPRINT VERIFIER</span>
+          <h3 class="modal-title">Inside a Sealed Block of Logs</h3>
+          <p class="modal-sub">Block #891,241 · Visual proof showing how 1,024 logs combine into one unbreakable root fingerprint</p>
+        </div>
+        <button class="btn-close-modal" id="btnCloseMerkleModal" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="merkle-visualizer-container">
+        <!-- Interactive Merkle Tree Graph -->
+        <div class="merkle-tree-graph">
+          <!-- Merkle Root -->
+          <div class="merkle-level root-level">
+            <div class="merkle-node root-node active">
+              <span class="node-label">MASTER ROOT FINGERPRINT</span>
+              <code class="node-hash">0x9a8e21c0e34f...d24b7a</code>
+              <span class="node-badge verified">PERMANENTLY SEALED</span>
+            </div>
+          </div>
+
+          <div class="merkle-connector-branches">
+            <svg class="merkle-connector-svg" viewBox="0 0 500 60" preserveAspectRatio="none">
+              <path d="M 250,0 C 250,35 125,25 125,60" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path d="M 250,0 C 250,35 375,25 375,60" fill="none" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </div>
+
+          <!-- Branch Level (Intermediate Hashes) -->
+          <div class="merkle-level branch-level">
+            <div class="merkle-node branch-node">
+              <span class="node-label">BRANCH FINGERPRINT L1</span>
+              <code class="node-hash">0x4a18...f93e</code>
+              <span class="node-badge">Fingerprint Pair (1+2)</span>
+            </div>
+            <div class="merkle-node branch-node">
+              <span class="node-label">BRANCH FINGERPRINT R1</span>
+              <code class="node-hash">0x8e27...c11a</code>
+              <span class="node-badge">Fingerprint Pair (3+4)</span>
+            </div>
+          </div>
+
+          <div class="merkle-connector-branches">
+            <svg class="merkle-connector-svg" viewBox="0 0 500 50" preserveAspectRatio="none">
+              <path d="M 125,0 C 125,25 65,25 65,50" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path d="M 125,0 C 125,25 185,25 185,50" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path d="M 375,0 C 375,25 315,25 315,50" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path d="M 375,0 C 375,25 435,25 435,50" fill="none" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </div>
+
+          <!-- Leaf Level (Event Payloads) -->
+          <div class="merkle-level leaf-level">
+            <div class="merkle-node leaf-node active-target">
+              <span class="node-label">LOG #1 [EVT-8921]</span>
+              <code class="node-hash">0x6b10...d482</code>
+              <span class="node-badge verified">VERIFIED ORIGINAL</span>
+            </div>
+            <div class="merkle-node leaf-node">
+              <span class="node-label">LOG #2 [EVT-8922]</span>
+              <code class="node-hash">0x3f5c...99a1</code>
+              <span class="node-badge">VERIFIED ORIGINAL</span>
+            </div>
+            <div class="merkle-node leaf-node">
+              <span class="node-label">LOG #3 [EVT-8923]</span>
+              <code class="node-hash">0x2d88...ee04</code>
+              <span class="node-badge">VERIFIED ORIGINAL</span>
+            </div>
+            <div class="merkle-node leaf-node">
+              <span class="node-label">LOG #4 [EVT-8924]</span>
+              <code class="node-hash">0x7c49...aa77</code>
+              <span class="node-badge">VERIFIED ORIGINAL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ZK Verification Console Output -->
+        <div class="zk-proof-console">
+          <div class="zk-console-header">
+            <span class="zk-status-indicator" id="zkStatusIndicator">● PROOF GENERATOR READY</span>
+            <span class="zk-circuit-tag">PRIVACY PROOF: ACTIVE</span>
+          </div>
+          <div class="zk-console-body" id="zkConsoleBody">
+            <div class="zk-line">[00:00.00] Log selected: Log #EVT-8921 (Successful employee login)</div>
+            <div class="zk-line">[00:00.02] Mathematical verification loaded into memory</div>
+            <div class="zk-line highlight">[00:00.04] Ready: Prove this log is authentic without exposing confidential secrets.</div>
+          </div>
+          <div class="zk-console-actions">
+            <button class="btn-zk-verify" id="btnRunZkProof">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span id="zkBtnText">Compute Digital Proof</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Re-Mapping Review Modal (Prompt 5.4) -->
+  <div class="modal-backdrop" id="remapModalBackdrop" aria-hidden="true">
+    <div class="merkle-modal glass-card-3d" style="max-width: 680px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-tag">AI AUTOMATIC LOG REPAIR</span>
+          <h3 class="modal-title">Review New Log Translation Rule</h3>
+          <p class="modal-sub">Source: Okta Login Service · Update changed format</p>
+        </div>
+        <button class="btn-close-modal" id="btnCloseRemapModal" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div style="padding: 16px 0; display: flex; flex-direction: column; gap: 16px;">
+        <div style="background: rgba(204, 145, 102, 0.08); border: 1px solid rgba(204, 145, 102, 0.25); border-radius: 8px; padding: 14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+            <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent-copper); font-weight: 600;">NEW LOG FORMAT DETECTED</span>
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: #2ecc71; font-weight: 600;">AI ACCURACY: 99.4%</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-body); margin: 0; line-height: 1.5;">Okta's latest software update started sending Passkey logins in a new nested format. Our AI analyzed it and automatically created this clean universal translation.</p>
+        </div>
+
+        <div class="diff-viewer-container" style="grid-template-columns: 1fr auto 1fr;">
+          <div class="diff-pane">
+            <span class="diff-pane-title">What Okta is Sending Now</span>
+            <div class="diff-code-body">
+              <div class="diff-line"><span class="code-key">event.target:</span> <span class="code-val">[object]</span></div>
+              <div class="diff-line" style="background: rgba(255, 71, 87, 0.15); border-left: 2px solid #ff4757;"><span class="code-key">.authenticator_enrollment:</span> <span class="code-val">"FIDO2_Passkey"</span></div>
+              <div class="diff-line"><span class="code-key">.status:</span> <span class="code-val">"ACTIVE"</span></div>
+            </div>
+          </div>
+          <div class="diff-arrow">→</div>
+          <div class="diff-pane">
+            <span class="diff-pane-title">Clean Universal Translation (<span class="term-explain" data-term="ocsf">OCSF</span> Standard)</span>
+            <div class="diff-code-body">
+              <div class="diff-line diff-highlight"><span class="code-key">"auth_factor.type":</span> <span class="code-val">"Passkey"</span></div>
+              <div class="diff-line diff-highlight"><span class="code-key">"auth_factor.type_id":</span> <span class="code-val">5 // FIDO2</span></div>
+              <div class="diff-line diff-highlight"><span class="code-key">"disposition":</span> <span class="code-val">"Enrolled"</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top: 1px solid var(--hairline); padding-top: 14px; margin-top: 8px;">
+          <button class="btn-pill" id="btnRejectRemap">Decline Proposal</button>
+          <button class="btn-pill active" id="btnAcceptRemap" style="background: var(--accent-copper); color: #000; font-weight: 600;">
+            <span>Accept & Save Permanently</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       "WHAT IS THIS?" 60-SECOND EXECUTIVE OVERVIEW MODAL (#4)
+       ========================================================================== -->
+  <div class="welcome-modal-overlay" id="welcomeModalOverlay" aria-modal="true" role="dialog" style="display: none;">
+    <div class="welcome-modal-card glass-card-3d">
+      <div class="welcome-modal-head">
+        <div class="welcome-badge">
+          <span class="pulse-dot" style="width:5px; height:5px;"></span>
+          <span>60-SECOND QUICK START</span>
+        </div>
+        <button class="welcome-close-btn" id="btnWelcomeClose" title="Dismiss overview">✕</button>
+      </div>
+
+      <h2 class="welcome-modal-title">What is this system?</h2>
+      <p class="welcome-modal-intro">
+        A simple, visual security console that takes confusing system logs from hundreds of different computers, translates them into one clean standard language, and locks them so evidence can never be faked.
+      </p>
+
+      <div class="welcome-points-list">
+        <div class="welcome-point-item">
+          <div class="welcome-point-num">1</div>
+          <div class="welcome-point-content">
+            <div class="welcome-point-header">
+              <svg class="welcome-point-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <strong class="welcome-point-heading">The Problem</strong>
+            </div>
+            <p class="welcome-point-desc">Every computer and app writes logs in a different, messy format. Security teams waste hours trying to make sense of them.</p>
+          </div>
+        </div>
+
+        <div class="welcome-point-item">
+          <div class="welcome-point-num">2</div>
+          <div class="welcome-point-content">
+            <div class="welcome-point-header">
+              <svg class="welcome-point-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <polyline points="9 12 11 14 15 10"></polyline>
+              </svg>
+              <strong class="welcome-point-heading">What We Do</strong>
+            </div>
+            <p class="welcome-point-desc">Our AI automatically cleans and translates every log into one universal format, keeping the original untouched.</p>
+          </div>
+        </div>
+
+        <div class="welcome-point-item">
+          <div class="welcome-point-num">3</div>
+          <div class="welcome-point-content">
+            <div class="welcome-point-header">
+              <svg class="welcome-point-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="9"></circle>
+                <line x1="10" y1="15" x2="10" y2="9"></line>
+                <line x1="14" y1="15" x2="14" y2="11"></line>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <strong class="welcome-point-heading">Why It Matters</strong>
+            </div>
+            <p class="welcome-point-desc">Everything is digitally sealed with unbreakable fingerprints, making it impossible for hackers to alter evidence or cover their tracks.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="welcome-modal-footer">
+        <label class="welcome-remember-label">
+          <input type="checkbox" id="chkWelcomeDontShow" />
+          <span>Don't show this welcome message on startup</span>
+        </label>
+        <div class="welcome-btn-group">
+          <button class="btn-pill" id="btnWelcomeDismiss">Explore on my own</button>
+          <button class="btn-pill active btn-tour-start" id="btnWelcomeStartTour">
+            <span>Show me around (Quick 30-sec tour) →</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       4-STEP SPOTLIGHT GUIDED TOUR (#5)
+       ========================================================================== -->
+  <div class="tour-spotlight-box" id="tourSpotlightBox" aria-hidden="true"></div>
+  <div class="tour-callout-card glass-card-3d" id="tourCalloutCard" role="region" aria-label="Guided Tour Callout" style="display: none;">
+    <div class="tour-card-head">
+      <div class="tour-step-badge">
+        <span class="tour-step-indicator" id="tourStepIndicator">Step 1 of 4</span>
+      </div>
+      <button class="tour-close-btn" id="btnTourSkip" title="Skip tour">✕</button>
+    </div>
+    <h4 class="tour-card-title" id="tourCardTitle">How Logs Flow (6 Simple Steps)</h4>
+    <p class="tour-card-desc" id="tourCardDesc">These tabs let you follow a security log from when it leaves a computer to when it is permanently locked in our vault.</p>
+    <div class="tour-card-actions">
+      <button class="btn-pill" id="btnTourBack" style="display: none;">← Back</button>
+      <div style="display: flex; gap: 8px; margin-left: auto;">
+        <button class="btn-pill" id="btnTourSkipText">Skip tour</button>
+        <button class="btn-pill active" id="btnTourNext">
+          <span id="tourNextText">Next →</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CENTRAL GLOSSARY POPOVER TOOLTIP (#3)
+       ========================================================================== -->
+  <div class="glossary-tooltip" id="glossaryTooltip" role="tooltip" aria-hidden="true">
+    <span class="glossary-tooltip-term" id="glossaryTerm">TERM</span>
+    <span class="glossary-tooltip-def" id="glossaryDef">Definition text goes here.</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
 </html>

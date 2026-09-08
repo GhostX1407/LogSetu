@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- LogSetu Favicon: Minimalist Geometric Monogram with Setu Bridge -->
+  <rect width="32" height="32" rx="7" fill="#0c0d12" />
+  <rect width="32" height="32" rx="7" stroke="rgba(204, 145, 102, 0.3)" stroke-width="1.2" />
+  
+  <style>
+    .fav-text {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      fill: #f5f5f7;
+    }
+  </style>
+
+  <text x="4.5" y="21.5" class="fav-text">LS</text>
+  
+  <!-- Subtle copper bridge arch over L and S -->
+  <path d="M 12 11.5 C 15 8.5, 20 8.5, 23 11" stroke="#cc9166" stroke-width="1.4" stroke-linecap="round" fill="none" />
+  <circle cx="12" cy="11.5" r="0.9" fill="#cc9166" />
+  <circle cx="23" cy="11" r="0.9" fill="#cc9166" />
+</svg>

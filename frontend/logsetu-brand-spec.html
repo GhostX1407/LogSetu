@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LogSetu — Wordmark Design Specification</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07080a;
+      --card-dark: #0f1117;
+      --border-dark: rgba(255, 255, 255, 0.08);
+      --text-dark: #f0f2f5;
+      --muted-dark: #717684;
+      --accent: #cc9166;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .spec-container {
+      max-width: 880px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .spec-header {
+      border-bottom: 1px solid var(--border-dark);
+      padding-bottom: 24px;
+    }
+    .spec-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: block;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    p.lead {
+      color: var(--muted-dark);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .card {
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 12px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .card-title {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-dark);
+    }
+    .card-white {
+      background: #ffffff;
+      color: #0c0d12;
+      border-color: #e5e7eb;
+    }
+    .card-white .card-title {
+      color: #6b7280;
+    }
+    .logo-preview-area {
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Scalable Wordmark SVG */
+    .wordmark-svg {
+      overflow: visible;
+    }
+    .wordmark-text {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+    }
+    .card .wordmark-text { fill: #f5f5f7; }
+    .card-white .wordmark-text { fill: #0d0f12; }
+    .wordmark-bridge {
+      stroke: var(--accent);
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      fill: none;
+    }
+    .card-white .wordmark-bridge {
+      stroke: #0d0f12;
+    }
+    .scale-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 24px 0;
+      border-top: 1px solid var(--border-dark);
+      margin-top: 8px;
+    }
+    .scale-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .scale-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted-dark);
+    }
+    .details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+      color: #b0b4be;
+      line-height: 1.5;
+    }
+    .details-list li {
+      list-style-type: none;
+      display: flex;
+      gap: 8px;
+    }
+    .details-list li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .nav-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 16px;
+      font-weight: 500;
+    }
+    .nav-back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="spec-container">
+    <div class="spec-header">
+      <span class="spec-tag">BRAND IDENTITY SPECIFICATION</span>
+      <h1>LogSetu Wordmark System</h1>
+      <p class="lead">Clean geometric sans-serif (Inter 600) with custom architectural bridge arc connecting <em>g</em> to <em>S</em>. Designed for high-reliability infrastructure & cybersecurity console environments.</p>
+      <a href="http://localhost:3000/#overview" class="nav-back-link">← Return to Live Console Dashboard</a>
+    </div>
+
+    <div class="grid-2">
+      <!-- Dark Theme Presentation -->
+      <div class="card">
+        <span class="card-title">Console Theme (Deep Vault Dark)</span>
+        <div class="logo-preview-area">
+          <svg class="wordmark-svg" viewBox="0 0 160 44" width="180" fill="none">
+            <text x="0" y="32" class="wordmark-text">LogSetu</text>
+            <path d="M 59 13.5 C 64.5 8, 74 8, 79 10.5" class="wordmark-bridge" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Light Theme Presentation -->
+      <div class="card card-white">
+        <span class="card-title">Daylight Theme (Solid Monochrome Black)</span>
+        <div class="logo-preview-area">
+          <svg class="wordmark-svg" viewBox="0 0 160 44" width="180" fill="none">
+            <text x="0" y="32" class="wordmark-text">LogSetu</text>
+            <path d="M 59 13.5 C 64.5 8, 74 8, 79 10.5" class="wordmark-bridge" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scalability & Context Validation -->
+    <div class="card">
+      <span class="card-title">Responsive Size Validation (From 16px Favicon to 48px Display)</span>
+      <div class="scale-row">
+        <!-- 48px Display -->
+        <div class="scale-item">
+          <svg class="wordmark-svg" viewBox="0 0 160 44" width="160" fill="none">
+            <text x="0" y="32" class="wordmark-text" style="font-size:32px;">LogSetu</text>
+            <path d="M 59 13.5 C 64.5 8, 74 8, 79 10.5" class="wordmark-bridge" />
+          </svg>
+          <span class="scale-label">Display (32px)</span>
+        </div>
+
+        <!-- 24px Header -->
+        <div class="scale-item">
+          <svg class="wordmark-svg" viewBox="0 0 160 44" width="110" fill="none">
+            <text x="0" y="32" class="wordmark-text" style="font-size:32px;">LogSetu</text>
+            <path d="M 59 13.5 C 64.5 8, 74 8, 79 10.5" class="wordmark-bridge" />
+          </svg>
+          <span class="scale-label">Navbar Header (22px)</span>
+        </div>
+
+        <!-- Favicon Monogram -->
+        <div class="scale-item">
+          <img src="favicon.svg" width="32" height="32" alt="Favicon" style="border-radius: 6px;">
+          <span class="scale-label">Tab Favicon (32px)</span>
+        </div>
+
+        <div class="scale-item">
+          <img src="favicon.svg" width="20" height="20" alt="Favicon" style="border-radius: 4px;">
+          <span class="scale-label">Micro (20px)</span>
+        </div>
+      </div>
+
+      <ul class="details-list">
+        <li><strong>Base Typography:</strong> Clean geometric sans-serif with neutral vertical stress and even tracking (-0.025em).</li>
+        <li><strong>Unique Custom Detail:</strong> Architectural 1.6px bridge arc ("Setu") seamlessly connects the log origin to the standard schema without decorative clutter.</li>
+        <li><strong>Color Flexibility:</strong> Native CSS variable support (renders in pure white/copper on dark canvas, solid ink black on light canvas).</li>
+        <li><strong>Zero Clutter:</strong> No taglines, no bulky icons beside it, no gradients, and no drop shadows.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
