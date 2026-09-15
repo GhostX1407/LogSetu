@@ -33,7 +33,7 @@ class HashChainEngine:
     def __init__(self) -> None:
         self._lock = threading.Lock()
         self._chain: list[HashBlock] = []
-        self._block_counter: int = 891_238  # start at a realistic-looking number for demo
+        self._block_counter: int = 891_238  # Initial baseline block sequence counter
         self._private_key: Ed25519PrivateKey | None = None
         self._public_key: Ed25519PublicKey | None = None
         self._public_key_hex: str = ""

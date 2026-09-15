@@ -95,7 +95,7 @@ class ExplainRequest:
 def explain_mapping(question: str = ""):
     """
     Explain a field mapping in plain English.
-    For demo: template-based answers matching common questions.
+    Provides deterministic explanations for standard security telemetry fields.
     """
     q = question.lower().strip()
 

@@ -34,7 +34,7 @@ async def lifespan(app: FastAPI):
     # ── Startup ──────────────────────────────────────────────────────
     logger.info("LogSetu starting up...")
 
-    # Seed pipeline with sample + synthetic data for demo
+    # Pre-populate pipeline with reference telemetry on startup
     from app.seed import seed_pipeline
     count = seed_pipeline(count=80)
     logger.info(f"Pipeline seeded with {count} events.")

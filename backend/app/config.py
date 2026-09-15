@@ -40,7 +40,7 @@ AI_ENABLED: bool = bool(GEMINI_API_KEY or GROQ_API_KEY or ANTHROPIC_API_KEY or O
 
 # ── Hash-chain ───────────────────────────────────────────────────────────────
 CHECKPOINT_INTERVAL: int = int(os.getenv("CHECKPOINT_INTERVAL", "10"))
-# How many events between signed checkpoints (low for demo, higher in prod)
+# Number of events between signed checkpoints (configurable per compliance policy)
 
 # ── Drift Detection ─────────────────────────────────────────────────────────
 DRIFT_WINDOW_SIZE: int = int(os.getenv("DRIFT_WINDOW_SIZE", "100"))

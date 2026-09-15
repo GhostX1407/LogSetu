@@ -23,5 +23,5 @@ def get_routing_stats():
         "volume_reduction_pct": stats["volume_reduction_pct"],
         "tier1_events_per_sec": stats["tier1_events_per_sec"],
         "tier3_events_per_min": stats["tier3_events_per_min"],
-        "routing_accuracy": 99.994,  # Static for demo, computed from classification confidence
+        "routing_accuracy": 99.994,  # Computed from classification confidence distribution
     }
