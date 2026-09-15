@@ -250,13 +250,13 @@
           <span class="view-folio">01</span>
           <span class="view-name">Live Overview</span>
         </button>
-        <button class="view-nav-item" data-target-view="view-traceability">
-          <span class="view-folio">02</span>
-          <span class="view-name">Raw ↔ Clean Logs</span>
-        </button>
         <button class="view-nav-item" data-target-view="view-wizard">
-          <span class="view-folio">03</span>
+          <span class="view-folio">02</span>
           <span class="view-name">AI Log Translator</span>
+        </button>
+        <button class="view-nav-item" data-target-view="view-traceability">
+          <span class="view-folio">03</span>
+          <span class="view-name">Raw ↔ Clean Logs</span>
         </button>
         <button class="view-nav-item" data-target-view="view-drift">
           <span class="view-folio">04</span>
@@ -273,73 +273,8 @@
       </div>
     </nav>
 
-    <!-- Main Viewport (Ledger Spine + Main Canvas) -->
+    <!-- Main Viewport -->
     <main class="main-viewport">
-
-      <!-- SIGNATURE STRUCTURAL MOTIF: THE LEDGER SPINE -->
-      <aside class="ledger-spine-container glass-card-3d" aria-label="Pipeline Architecture Spine">
-        <div class="spine-header">
-          <span class="spine-badge">How Logs Flow</span>
-          <div class="spine-status">System Active</div>
-        </div>
-
-        <div class="spine-rail" id="spineRail">
-          <!-- 1px Vertical Hairline -->
-          <div class="spine-hairline"></div>
-          <!-- Traveling Copper Dot -->
-          <div class="spine-traveler" id="spineTraveler"></div>
-
-          <!-- Stage Nodes (Folio Numerals in Ivy Presto/Playfair) -->
-          <div class="spine-node active" data-stage="0" style="top: 0%;">
-            <div class="spine-node-point"></div>
-            <span class="spine-folio">01</span>
-            <span class="spine-label">Ingest</span>
-            <span class="spine-rate">1.4 GB/s Live</span>
-          </div>
-
-          <div class="spine-node" data-stage="1" style="top: 20%;">
-            <div class="spine-node-point"></div>
-            <span class="spine-folio">02</span>
-            <span class="spine-label">Safe Vault</span>
-            <span class="spine-rate">Original Backup</span>
-          </div>
-
-          <div class="spine-node" data-stage="2" style="top: 40%;">
-            <div class="spine-node-point"></div>
-            <span class="spine-folio">03</span>
-            <span class="spine-label">Quality Check</span>
-            <span class="spine-rate">Checks Changes</span>
-          </div>
-
-          <div class="spine-node" data-stage="3" style="top: 60%;">
-            <div class="spine-node-point"></div>
-            <span class="spine-folio">04</span>
-            <span class="spine-label">AI Reader</span>
-            <span class="spine-rate">Finds Fields</span>
-          </div>
-
-          <div class="spine-node" data-stage="4" style="top: 80%;">
-            <div class="spine-node-point"></div>
-            <span class="spine-folio">05</span>
-            <span class="spine-label">Standardizer</span>
-            <span class="spine-rate">Clean Format</span>
-          </div>
-
-          <div class="spine-node" data-stage="5" style="top: 100%;">
-            <div class="spine-node-point"></div>
-            <span class="spine-folio">06</span>
-            <span class="spine-label">Smart Route</span>
-            <span class="spine-rate">Alerts & Archive</span>
-          </div>
-        </div>
-
-        <div class="spine-footer">
-          <div class="spine-integrity">
-            <span>Fingerprint Seal:</span>
-            <span class="spine-integrity-badge">VERIFIED OK</span>
-          </div>
-        </div>
-      </aside>
 
       <!-- Main Operational Console Content (6 Dedicated View Panels) -->
       <div class="console-content">
@@ -348,8 +283,76 @@
              VIEW 01: OVERVIEW DASHBOARD
              ==================================================================== -->
         <div class="view-panel active" id="view-overview">
-          <!-- Hero Section -->
-          <section class="hero-section">
+          <div class="overview-layout">
+            <!-- SIGNATURE STRUCTURAL MOTIF: THE LEDGER SPINE (ONLY ON LIVE OVERVIEW) -->
+            <aside class="ledger-spine-container glass-card-3d" aria-label="Pipeline Architecture Spine">
+              <div class="spine-header">
+                <span class="spine-badge">How Logs Flow</span>
+                <div class="spine-status">System Active</div>
+              </div>
+
+              <div class="spine-rail" id="spineRail">
+                <!-- 1px Vertical Hairline -->
+                <div class="spine-hairline"></div>
+                <!-- Traveling Copper Dot -->
+                <div class="spine-traveler" id="spineTraveler"></div>
+
+                <!-- Stage Nodes (Folio Numerals in Ivy Presto/Playfair) -->
+                <div class="spine-node active" data-stage="0" style="top: 0%;">
+                  <div class="spine-node-point"></div>
+                  <span class="spine-folio">01</span>
+                  <span class="spine-label">Ingest</span>
+                  <span class="spine-rate">1.4 GB/s Live</span>
+                </div>
+
+                <div class="spine-node" data-stage="1" style="top: 20%;">
+                  <div class="spine-node-point"></div>
+                  <span class="spine-folio">02</span>
+                  <span class="spine-label">Safe Vault</span>
+                  <span class="spine-rate">Original Backup</span>
+                </div>
+
+                <div class="spine-node" data-stage="2" style="top: 40%;">
+                  <div class="spine-node-point"></div>
+                  <span class="spine-folio">03</span>
+                  <span class="spine-label">Quality Check</span>
+                  <span class="spine-rate">Checks Changes</span>
+                </div>
+
+                <div class="spine-node" data-stage="3" style="top: 60%;">
+                  <div class="spine-node-point"></div>
+                  <span class="spine-folio">04</span>
+                  <span class="spine-label">AI Reader</span>
+                  <span class="spine-rate">Finds Fields</span>
+                </div>
+
+                <div class="spine-node" data-stage="4" style="top: 80%;">
+                  <div class="spine-node-point"></div>
+                  <span class="spine-folio">05</span>
+                  <span class="spine-label">Standardizer</span>
+                  <span class="spine-rate">Clean Format</span>
+                </div>
+
+                <div class="spine-node" data-stage="5" style="top: 100%;">
+                  <div class="spine-node-point"></div>
+                  <span class="spine-folio">06</span>
+                  <span class="spine-label">Smart Route</span>
+                  <span class="spine-rate">Alerts & Archive</span>
+                </div>
+              </div>
+
+              <div class="spine-footer">
+                <div class="spine-integrity">
+                  <span>Fingerprint Seal:</span>
+                  <span class="spine-integrity-badge">VERIFIED OK</span>
+                </div>
+              </div>
+            </aside>
+
+            <!-- Main Overview Dashboard Content Column -->
+            <div class="overview-main">
+              <!-- Hero Section -->
+              <section class="hero-section">
             <div class="hero-editorial">
               <div class="hero-eyebrow">CENTRAL SECURITY LOG HUB</div>
               <h1 class="hero-title">Every system log. <em>One tamper-proof record book.</em></h1>
@@ -477,81 +480,6 @@
                     <!-- Stream rows dynamically injected by app.js -->
                   </tbody>
                 </table>
-              </div>
-            </div>
-
-            <!-- Hash-Chain Summary Card -->
-            <div class="hashchain-panel glass-card-3d">
-              <div>
-                <div class="hashchain-head-group">
-                  <h3 class="hashchain-title">Tamper-Proof Record Chain</h3>
-                  <span class="chain-badge-ok">● 100% UNTOUCHED</span>
-                </div>
-                <p class="hashchain-sub">Every log bundle is sealed with digital fingerprints so past records can never be edited or hidden.</p>
-
-                <!-- Cryptographic State Summary Strip -->
-                <div class="ledger-health-strip">
-                  <div class="health-strip-item">
-                    <span class="strip-label">CHAIN INTEGRITY</span>
-                    <span class="strip-val" style="color: #2ecc71;">● 100% VERIFIED</span>
-                  </div>
-                  <div class="health-strip-item">
-                    <span class="strip-label">MASTER FINGERPRINT</span>
-                    <span class="strip-val">0x9a8e...d24b</span>
-                  </div>
-                  <div class="health-strip-item">
-                    <span class="strip-label">AUDIT PROOF</span>
-                    <span class="strip-val" style="color: var(--accent-copper);">Cryptographic Proof</span>
-                  </div>
-                </div>
-
-                <div class="chain-blocks-list" id="chainBlocksList">
-                  <div class="chain-block-item" data-block-id="891241">
-                    <span class="block-folio-num">891</span>
-                    <div class="block-meta">
-                      <span class="block-hash">0x9a8e...d24b</span>
-                      <span class="block-time">Block #891,241 · User Login Event (Cleaned)</span>
-                    </div>
-                    <span class="block-status-badge">SEALED</span>
-                  </div>
-
-                  <div class="chain-block-item" data-block-id="891240">
-                    <span class="block-folio-num">890</span>
-                    <div class="block-meta">
-                      <span class="block-hash">0x4f12...e81c</span>
-                      <span class="block-time">Block #891,240 · Firewall Threat Event (Cleaned)</span>
-                    </div>
-                    <span class="block-status-badge">SEALED</span>
-                  </div>
-
-                  <div class="chain-block-item" data-block-id="891239">
-                    <span class="block-folio-num">889</span>
-                    <div class="block-meta">
-                      <span class="block-hash">0xb73a...912f</span>
-                      <span class="block-time">Block #891,239 · Antivirus Alert (Cleaned)</span>
-                    </div>
-                    <span class="block-status-badge">SEALED</span>
-                  </div>
-
-                  <div class="chain-block-item" data-block-id="891238">
-                    <span class="block-folio-num">888</span>
-                    <div class="block-meta">
-                      <span class="block-hash">0x1109...aa44</span>
-                      <span class="block-time">Block #891,238 · Cloud Admin Event (Cleaned)</span>
-                    </div>
-                    <span class="block-status-badge">SEALED</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="chain-actions">
-                <button class="btn-verify-chain" id="btnVerifyChain">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    <path d="m9 12 2 2 4-4" />
-                  </svg>
-                  <span id="verifyChainText">Inspect Audit Proof</span>
-                </button>
               </div>
             </div>
           </section>
@@ -704,6 +632,8 @@
               </div>
             </div>
           </section>
+            </div> <!-- /.overview-main -->
+          </div> <!-- /.overview-layout -->
         </div>
 
         <!-- ====================================================================
@@ -737,16 +667,28 @@
               </div>
               <div class="workbench-controls">
                 <!-- Custom Gilded Slider -->
-                <div class="slider-container" title="Adjust Confidence Cutoff">
+                <div class="slider-container" id="strictnessSliderContainer" title="Translation Strictness sets the confidence cutoff threshold. Fields above this cutoff are accepted as mapped; fields below are flagged for manual review rather than guessed.">
                   <span class="slider-label">Translation Strictness</span>
-                  <div class="custom-range-track" id="customSlider">
-                    <div class="custom-range-progress" id="sliderProgress"></div>
-                    <div class="custom-range-thumb" id="sliderThumb"></div>
+                  <button type="button" class="slider-info-icon" id="strictnessInfoBtn" aria-label="Translation Strictness Information" title="Click or hover to learn how strictness affects field mapping confidence">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="16" x2="12" y2="12"></line>
+                      <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                  </button>
+                  <div class="strictness-info-popup" id="strictnessInfoPopup" role="tooltip">
+                    <h4>Translation Strictness</h4>
+                    <p>Sets the AI confidence cutoff. Attributes below this threshold are marked <strong>Flagged for Review</strong> instead of auto-mapped.</p>
+                    <p style="margin-top: 5px; font-size: 0.74rem; color: var(--text-muted);">• <strong>Higher (85%+)</strong>: Strict fidelity, flags ambiguous tokens.<br>• <strong>Lower (&lt;70%)</strong>: Permissive mapping of lower-confidence fields.</p>
                   </div>
-                  <span class="slider-val" id="sliderValDisplay">94%</span>
+                  <div class="custom-range-track" id="customSlider" role="slider" aria-valuemin="40" aria-valuemax="99" aria-valuenow="80" tabindex="0" title="Drag or use arrow keys to adjust translation strictness threshold">
+                    <div class="custom-range-progress" id="sliderProgress" style="width: 80%;"></div>
+                    <div class="custom-range-thumb" id="sliderThumb" style="left: 80%;"></div>
+                  </div>
+                  <span class="slider-val" id="sliderValDisplay">80%</span>
                 </div>
 
-                <button class="btn-pill" id="btnToggleThreads">
+                <button class="btn-pill active" id="btnToggleThreads" aria-pressed="true" title="Toggle visual SVG forensic connecting threads">
                   <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="4" y1="9" x2="20" y2="9"></line>
                     <line x1="4" y1="15" x2="20" y2="15"></line>
@@ -799,12 +741,42 @@
               </div>
             </div>
 
+            <!-- Traceability High-Level Summary Banner for First-Time Viewers (Part 7) -->
+            <div class="section-summary-banner" id="traceSummaryBanner" style="display: none;">
+              <div class="summary-banner-top">
+                <div class="summary-banner-headline" id="traceSummaryHeadline">
+                  <span>Forensic Traceability Verdict:</span> <em>100% of original attributes preserved</em> in clean OCSF standard
+                </div>
+                <button type="button" class="btn-pill btn-toggle-detail" id="btnToggleTraceDiff" aria-expanded="true">
+                  <span id="btnToggleTraceDiffText">Hide Code Inspector ▴</span>
+                </button>
+              </div>
+              <div class="summary-metric-chips" id="traceSummaryChips">
+                <span class="summary-metric-chip success">Original Source: <strong id="sumTraceSource">Palo Alto FW</strong></span>
+                <span class="summary-metric-chip success">Field Mapping Integrity: <strong>100% Verified</strong></span>
+                <span class="summary-metric-chip success">Data Loss: <strong>0 Bytes (Lossless)</strong></span>
+                <span class="summary-metric-chip">Target Schema: <strong>OCSF Standard v1.1.0</strong></span>
+              </div>
+            </div>
+
             <!-- Trace Split Workspace -->
-            <div class="trace-split-wrapper" id="traceSplitWrapper">
+            <div class="trace-split-wrapper collapsible-detail-wrapper" id="traceSplitWrapper">
+              <!-- Empty State (Shown when no log has been processed yet) -->
+              <div class="trace-empty-container" id="traceEmptyState">
+                <div style="font-size: 2rem; margin-bottom: 12px; opacity: 0.6;">📋</div>
+                <h3 style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin: 0 0 6px 0;">No Log Selected Yet</h3>
+                <p style="font-size: 0.86rem; color: var(--text-muted); max-width: 440px; margin: 0 0 18px 0; line-height: 1.5;">
+                  Upload a log file, paste raw log text, or choose a sample in the AI Log Translator to inspect live raw ↔ clean standard traceability.
+                </p>
+                <button type="button" class="btn-pill active" id="btnGoToTranslatorEmpty" style="cursor: pointer;">
+                  <span>Go to AI Log Translator →</span>
+                </button>
+              </div>
+
               <!-- Left: Raw Log Monospace Panel -->
-              <div class="trace-panel trace-panel-raw">
+              <div class="trace-panel trace-panel-raw" id="tracePanelRaw" style="display: none;">
                 <div class="trace-panel-head">
-                  <span class="panel-format-tag active">
+                  <span class="panel-format-tag active" id="rawPanelFormatTag">
                     <!-- CEF Format Glyph (14x14 monoline, 1.5px stroke) -->
                     <svg class="format-glyph format-glyph-cef active" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="CEF format glyph">
                       <rect x="1.5" y="2" width="11" height="10" rx="2"></rect>
@@ -812,10 +784,10 @@
                       <line x1="9" y1="4.5" x2="9" y2="9.5"></line>
                       <line x1="1.5" y1="6" x2="12.5" y2="6"></line>
                     </svg>
-                    Original Raw Log (From Windows Computer)
+                    Original Raw Log
                   </span>
                   <div class="panel-meta-actions">
-                    <span class="panel-meta-tag">Safe Store · 1,420 bytes</span>
+                    <span class="panel-meta-tag" id="rawPanelByteSize">Preserved Raw</span>
                     <button type="button" class="panel-info-btn" id="btnRawLogInfo" title="Click for a quick simple explanation of what this log is and what it is for" aria-label="Explain original raw log">
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -834,34 +806,25 @@
                     <button type="button" class="explainer-close-btn" id="btnCloseRawInfo" title="Close explanation">✕</button>
                   </div>
                   <p class="explainer-main-text">
-                    <strong>What is this:</strong> This is the exact, unedited security record created by Windows the instant employee <strong>tirth.patel</strong> logged into workstation <em>WKSTN-FIN-08</em>.
+                    <strong>What is this:</strong> This is the exact, unedited security record created by the source device.
                   </p>
                   <ul class="explainer-bullets">
-                    <li><strong>What is it doing:</strong> It captures the login event using Windows machine codes — like event <code>4624</code> (login succeeded), <code>logonType=10</code> (remote connection), and IP <code>192.168.10.144</code>.</li>
-                    <li><strong>What is it for:</strong> Government regulations and court evidence require keeping the <em>100% untouched original log</em> so no one can ever accuse the company of altering or faking evidence.</li>
-                    <li><strong>How this console helps:</strong> Our system locks this original log permanently in a tamper-proof vault, while translating it into the clean, human-readable format on the right!</li>
+                    <li><strong>What is it doing:</strong> It captures the original event using device machine codes, preserved byte-for-byte.</li>
+                    <li><strong>What is it for:</strong> Legal chain-of-custody requires keeping the <em>100% untouched original log</em> so no one can ever accuse the organization of altering evidence.</li>
+                    <li><strong>How this console helps:</strong> Our system locks this original log permanently in a tamper-proof vault, while translating it into the clean universal format on the right!</li>
                   </ul>
                 </div>
 
-                <div class="raw-code-body" id="rawLogBody">
-                  <div class="raw-line" id="rawLine-eventCode" data-match="ocsf-code"><span class="line-no">01</span><span class="raw-token-key">CEF:0|Microsoft|Windows|2026.1|4624|</span><span class="raw-token-val">An account was successfully logged on</span></div>
-                  <div class="raw-line" id="rawLine-time" data-match="ocsf-time"><span class="line-no">02</span><span class="raw-token-key">rt=</span><span class="raw-token-val">2026-09-08T00:12:44.914Z</span> <span class="raw-token-key">deviceExternalId=</span><span class="raw-token-val">DC01-PROD</span></div>
-                  <div class="raw-line" id="rawLine-user" data-match="ocsf-user"><span class="line-no">03</span><span class="raw-token-key">suser=</span><span class="raw-token-val">tirth.patel</span> <span class="raw-token-key">suid=</span><span class="raw-token-val">S-1-5-21-3979</span></div>
-                  <div class="raw-line" id="rawLine-domain" data-match="ocsf-domain"><span class="line-no">04</span><span class="raw-token-key">sdomain=</span><span class="raw-token-val">CORP.DOM</span> <span class="raw-token-key">logonGuid=</span><span class="raw-token-val">{4A8B9C2D-E1F0}</span></div>
-                  <div class="raw-line" id="rawLine-logonType" data-match="ocsf-logonType"><span class="line-no">05</span><span class="raw-token-key">logonType=</span><span class="raw-token-val">10 (RemoteInteractive)</span></div>
-                  <div class="raw-line" id="rawLine-srcIp" data-match="ocsf-ip"><span class="line-no">06</span><span class="raw-token-key">src=</span><span class="raw-token-val">192.168.10.144</span> <span class="raw-token-key">spt=</span><span class="raw-token-val">54210</span></div>
-                  <div class="raw-line" id="rawLine-workstation" data-match="ocsf-workstation"><span class="line-no">07</span><span class="raw-token-key">shost=</span><span class="raw-token-val">WKSTN-FIN-08</span> <span class="raw-token-key">proto=</span><span class="raw-token-val">TCP</span></div>
-                  <div class="raw-line" id="rawLine-hash" data-match="ocsf-hash"><span class="line-no">08</span><span class="raw-token-key">ledger_hash=</span><span class="raw-token-val">0x3f7a81c2e9b0d4...c89e</span></div>
-                </div>
+                <div class="raw-code-body" id="rawLogBody"></div>
               </div>
 
               <!-- Center: Connecting SVG Threads Canvas -->
-              <svg class="trace-threads-canvas" id="traceThreadsCanvas" aria-hidden="true"></svg>
+              <svg class="trace-threads-canvas" id="traceThreadsCanvas" aria-hidden="true" style="display: none;"></svg>
 
               <!-- Right: OCSF Normalized JSON Panel -->
-              <div class="trace-panel trace-panel-ocsf">
+              <div class="trace-panel trace-panel-ocsf" id="tracePanelOcsf" style="display: none;">
                 <div class="trace-panel-head">
-                  <span class="panel-format-tag">
+                  <span class="panel-format-tag" id="ocsfPanelFormatTag">
                     <!-- JSON Format Glyph (14x14 monoline, 1.5px stroke) -->
                     <svg class="format-glyph format-glyph-json" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-label="JSON format glyph">
                       <path d="M4.5 2.5c-.8 0-1.5.7-1.5 1.5v1.5c0 .8-.7 1.5-1.5 1.5.8 0 1.5.7 1.5 1.5v1.5c0 .8.7 1.5 1.5 1.5"></path>
@@ -870,7 +833,7 @@
                     Clean Standard Format (<span class="term-explain" data-term="ocsf">OCSF</span> JSON)
                   </span>
                   <div class="panel-meta-actions">
-                    <span class="panel-meta-tag">Event Category: User Login (1001)</span>
+                    <span class="panel-meta-tag" id="ocsfPanelMetaCategory">Universal OCSF Standard</span>
                     <button type="button" class="panel-info-btn" id="btnOcsfLogInfo" title="Click for a quick simple explanation of what this clean standard log is and why it matters" aria-label="Explain clean standard log">
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -889,48 +852,15 @@
                     <button type="button" class="explainer-close-btn" id="btnCloseOcsfInfo" title="Close explanation">✕</button>
                   </div>
                   <p class="explainer-main-text">
-                    <strong>What is this:</strong> This is the exact same event from the left, but translated into a single universal standard (<span class="term-explain" data-term="ocsf">OCSF</span> JSON) that anyone or any computer tool can read easily.
+                    <strong>What is this:</strong> This is the exact same event from the left, translated into universal standard (<span class="term-explain" data-term="ocsf">OCSF</span> JSON) that any forensic tool can query.
                   </p>
                   <ul class="explainer-bullets">
-                    <li><strong>What is it doing:</strong> It replaces weird vendor codes with clear plain labels — like <code>"logon_type": "RemoteInteractive"</code> and <code>"user.name": "tirth.patel"</code>.</li>
-                    <li><strong>What is it for:</strong> When an enterprise runs Windows PCs, Macs, Linux servers, and AWS clouds, searching 4 different formats is slow and frustrating. This makes all devices speak <em>one shared language</em>.</li>
+                    <li><strong>What is it doing:</strong> It maps vendor codes into standardized fields with explicit confidence scores.</li>
+                    <li><strong>What is it for:</strong> Unifies logs across firewalls, cloud, endpoint detection, and identity systems into one common taxonomy.</li>
                     <li><strong>Visual proof:</strong> Move your mouse over any line to see glowing laser threads that visually prove every clean word links 100% back to the original raw proof.</li>
                   </ul>
                 </div>
-                <div class="ocsf-code-body" id="ocsfLogBody">
-                  <div class="ocsf-row" id="ocsf-code" data-match="rawLine-eventCode">
-                    <span class="ocsf-key">"activity_id": <span class="ocsf-val">1</span> <span class="raw-token-key">// Logon</span></span>
-                    <span class="ocsf-confidence-chip">100%</span>
-                  </div>
-                  <div class="ocsf-row" id="ocsf-time" data-match="rawLine-time">
-                    <span class="ocsf-key">"time": <span class="ocsf-val">1788823458914</span></span>
-                    <span class="ocsf-confidence-chip">100%</span>
-                  </div>
-                  <div class="ocsf-row" id="ocsf-user" data-match="rawLine-user">
-                    <span class="ocsf-key">"user.name": <span class="ocsf-val">"tirth.patel"</span></span>
-                    <span class="ocsf-confidence-chip">99.9%</span>
-                  </div>
-                  <div class="ocsf-row" id="ocsf-domain" data-match="rawLine-domain">
-                    <span class="ocsf-key">"user.domain": <span class="ocsf-val">"CORP.DOM"</span></span>
-                    <span class="ocsf-confidence-chip">99.8%</span>
-                  </div>
-                  <div class="ocsf-row" id="ocsf-logonType" data-match="rawLine-logonType">
-                    <span class="ocsf-key">"logon_type": <span class="ocsf-val">"RemoteInteractive"</span></span>
-                    <span class="ocsf-confidence-chip">99.4%</span>
-                  </div>
-                  <div class="ocsf-row" id="ocsf-ip" data-match="rawLine-srcIp">
-                    <span class="ocsf-key">"src_endpoint.ip": <span class="ocsf-val">"192.168.10.144"</span></span>
-                    <span class="ocsf-confidence-chip">100%</span>
-                  </div>
-                  <div class="ocsf-row" id="ocsf-workstation" data-match="rawLine-workstation">
-                    <span class="ocsf-key">"src_endpoint.hostname": <span class="ocsf-val">"WKSTN-FIN-08"</span></span>
-                    <span class="ocsf-confidence-chip">99.6%</span>
-                  </div>
-                  <div class="ocsf-row" id="ocsf-hash" data-match="rawLine-hash">
-                    <span class="ocsf-key">"ledger.parent_hash": <span class="ocsf-val">"0x3f7a...c89e"</span></span>
-                    <span class="ocsf-confidence-chip">IMMUTABLE</span>
-                  </div>
-                </div>
+                <div class="ocsf-code-body" id="ocsfLogBody"></div>
               </div>
             </div>
           </section>
@@ -979,6 +909,7 @@
             <p class="wizard-card-sub">Drag and drop any log file or pick a popular example below.</p>
 
             <div class="log-dropzone" id="logDropzone">
+              <input type="file" id="logFileInput" accept=".log,.json,.syslog,.csv,.txt,.xml" style="display: none;" />
               <div class="dropzone-icon">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -992,10 +923,34 @@
               </div>
             </div>
 
+            <!-- Additive Clipboard Paste Bar (for analysts with logs on clipboard) -->
+            <div class="paste-log-wrapper" style="margin-top: 14px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <span class="preset-title" style="margin: 0;">Or paste raw log line directly:</span>
+                <button type="button" class="btn-pill" id="btnClearLogInput" style="padding: 2px 8px; font-size: 11px; display: none;">Clear</button>
+              </div>
+              <textarea id="logPasteInput" class="nl-query-input" rows="2" 
+                placeholder="Paste raw log line here (e.g. CEF, JSON, Syslog, Key=Value, or custom format)..." 
+                style="width: 100%; border-radius: 8px; resize: vertical; min-height: 52px; font-family: var(--font-mono, monospace); font-size: 12px; padding: 8px 12px; line-height: 1.4;"></textarea>
+            </div>
+
+            <!-- Additive Custom Log Label / Name Input (Part 8) -->
+            <div class="custom-log-name-wrapper" style="margin-top: 14px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <label for="customLogNameInput" class="preset-title" style="margin: 0; font-size: 0.82rem;">
+                  Log Label / Custom Name <span style="font-size: 0.74rem; color: var(--text-muted); font-weight: normal;">(Optional — shows alongside ledger block number)</span>:
+                </label>
+              </div>
+              <input type="text" id="customLogNameInput" class="nl-query-input"
+                placeholder="e.g. Incident-2026-Alpha, Web-SQLi-Probe, HR-Portal-Login..."
+                maxlength="60"
+                style="width: 100%; border-radius: 8px; font-family: var(--font-mono, monospace); font-size: 12px; padding: 7px 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--hairline); color: var(--text-heading);" />
+            </div>
+
             <div class="preset-sources-wrap">
               <span class="preset-title">Or test with one of these popular examples:</span>
               <div class="preset-buttons">
-                <button class="preset-chip active" data-preset="pan-os">Palo Alto Firewall</button>
+                <button class="preset-chip" data-preset="pan-os">Palo Alto Firewall</button>
                 <button class="preset-chip" data-preset="cloudtrail">AWS Cloud Activity</button>
                 <button class="preset-chip" data-preset="crowdstrike">CrowdStrike Antivirus</button>
                 <button class="preset-chip" data-preset="win-event">Windows Login Log</button>
@@ -1011,10 +966,43 @@
 
           <!-- Wizard Step 2: Mapping Proposal & Diff Viewer -->
           <div class="wizard-step-card glass-card-3d" id="wizardStep2" style="display: none;">
-            <h3 class="wizard-card-title">Step 2: AI-Proposed Field Translations</h3>
+            <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+              <h3 class="wizard-card-title" style="margin-bottom: 0;">Step 2: AI-Proposed Field Translations</h3>
+              <span class="format-chip" id="wizardTranslationStatusBadge" style="display: inline-flex; align-items: center; font-size: 11px;"></span>
+            </div>
             <p class="wizard-card-sub">Review how each original field maps to our universal standard. High confidence matches are highlighted.</p>
 
-            <div class="diff-viewer-container" id="wizardDiffContainer">
+            <!-- Empty State for Step 2 -->
+            <div class="wizard-empty-state" id="wizardStep2EmptyState" style="display: none;">
+              <div style="font-size: 2rem; margin-bottom: 12px; opacity: 0.6;">⚡</div>
+              <h3 style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin: 0 0 6px 0;">No Translation Generated Yet</h3>
+              <p style="font-size: 0.86rem; color: var(--text-muted); max-width: 440px; margin: 0 0 16px 0; line-height: 1.5;">
+                Please choose a sample preset, upload a file, or paste raw log text in Step 1 first.
+              </p>
+              <button type="button" class="btn-pill active" id="btnBackToStep1FromEmpty" style="cursor: pointer;">
+                <span>← Back to Step 1: Input Log</span>
+              </button>
+            </div>
+
+            <!-- Step 2 High-Level Summary Banner for First-Time Viewers (Part 7) -->
+            <div class="section-summary-banner" id="wizardSummaryBanner" style="display: none;">
+              <div class="summary-banner-top">
+                <div class="summary-banner-headline" id="wizardSummaryHeadline">
+                  <span>AI Translation Proposed:</span> <em>5 fields translated</em> with <strong>98.4% confidence</strong>
+                </div>
+                <button type="button" class="btn-pill btn-toggle-detail" id="btnToggleWizardDiff" aria-expanded="true">
+                  <span id="btnToggleWizardDiffText">Hide Code Diff ▴</span>
+                </button>
+              </div>
+              <div class="summary-metric-chips" id="wizardSummaryChips">
+                <span class="summary-metric-chip success">Translation Confidence: <strong id="sumWizardConf">98.4%</strong></span>
+                <span class="summary-metric-chip success">Data Loss: <strong id="sumWizardLoss">0.00% (Lossless)</strong></span>
+                <span class="summary-metric-chip">Standard Schema: <strong id="sumWizardStandard">OCSF v1.1.0</strong></span>
+                <span class="summary-metric-chip">Source Format: <strong id="sumWizardFormat">CEF (Common Event Format)</strong></span>
+              </div>
+            </div>
+
+            <div class="diff-viewer-container collapsible-detail-wrapper" id="wizardDiffContainer">
               <!-- SVG Connecting Thread Overlay (Feature 2: Dynamic Copper Draw-On) -->
               <svg class="wizard-threads-overlay" id="wizardThreadsOverlay" aria-hidden="true">
                 <defs>
@@ -1030,13 +1018,7 @@
               <!-- Left: Raw Source Schema Pane -->
               <div class="diff-pane" id="wizardDiffPaneRaw">
                 <span class="diff-pane-title">What the Device Sent (Raw Log)</span>
-                <div class="diff-code-body">
-                  <div class="diff-line" id="wraw-line-1"><span class="line-no">01</span><span class="code-key">src_ip:</span> <span class="code-val">"192.168.10.144"</span></div>
-                  <div class="diff-line" id="wraw-line-2"><span class="line-no">02</span><span class="code-key">dst_port:</span> <span class="code-val">443</span></div>
-                  <div class="diff-line" id="wraw-line-3"><span class="line-no">03</span><span class="code-key">act:</span> <span class="code-val">"allow"</span></div>
-                  <div class="diff-line" id="wraw-line-4"><span class="line-no">04</span><span class="code-key">proto:</span> <span class="code-val">"tcp"</span></div>
-                  <div class="diff-line" id="wraw-line-5"><span class="line-no">05</span><span class="code-key">threat_id:</span> <span class="code-val">"<span class="term-explain" data-term="cve">CVE-2024-3400</span>"</span></div>
-                </div>
+                <div class="diff-code-body" id="wizardDiffRawBody"></div>
               </div>
 
               <!-- Center: Transition Pivot / Arrow -->
@@ -1047,68 +1029,7 @@
               <!-- Right: Normalized OCSF Target Pane with Per-Field Confidence Bars (Feature 1) -->
               <div class="diff-pane" id="wizardDiffPaneOcsf">
                 <span class="diff-pane-title">Universal Clean Meaning (<span class="term-explain" data-term="ocsf">OCSF</span> Standard)</span>
-                <div class="diff-code-body">
-                  <!-- Row 1 (98.4% Copper) -->
-                  <div class="diff-row-unit">
-                    <div class="diff-line diff-highlight" id="wocsf-line-1">
-                      <span class="line-no">01</span>
-                      <span class="code-key">"src_endpoint.ip":</span> 
-                      <span class="code-val">"192.168.10.144"</span>
-                    </div>
-                    <div class="diff-confidence-bar-track" data-tooltip="98.4% — AI matched original IP address to standard source endpoint">
-                      <div class="diff-confidence-bar-fill" data-target-width="98.4%" style="--bar-color: #cc9166; width: 0%;"></div>
-                    </div>
-                  </div>
-
-                  <!-- Row 2 (99.1% Copper) -->
-                  <div class="diff-row-unit">
-                    <div class="diff-line diff-highlight" id="wocsf-line-2">
-                      <span class="line-no">02</span>
-                      <span class="code-key">"dst_endpoint.port":</span> 
-                      <span class="code-val">443</span>
-                    </div>
-                    <div class="diff-confidence-bar-track" data-tooltip="99.1% — Exact match for destination port number">
-                      <div class="diff-confidence-bar-fill" data-target-width="99.1%" style="--bar-color: #cc9166; width: 0%;"></div>
-                    </div>
-                  </div>
-
-                  <!-- Row 3 (96.5% Copper) -->
-                  <div class="diff-row-unit">
-                    <div class="diff-line diff-highlight" id="wocsf-line-3">
-                      <span class="line-no">03</span>
-                      <span class="code-key">"disposition_id":</span> 
-                      <span class="code-val">1 // Allowed</span>
-                    </div>
-                    <div class="diff-confidence-bar-track" data-tooltip="96.5% — &quot;allow&quot; translated to standard status &quot;Allowed&quot;">
-                      <div class="diff-confidence-bar-fill" data-target-width="96.5%" style="--bar-color: #cc9166; width: 0%;"></div>
-                    </div>
-                  </div>
-
-                  <!-- Row 4 (61.2% Steel Low Confidence with inline Review pill) -->
-                  <div class="diff-row-unit">
-                    <div class="diff-line diff-highlight low-confidence-row" id="wocsf-line-4">
-                      <span class="line-no">04</span>
-                      <span class="code-key">"connection_info.protocol_name":</span> 
-                      <span class="code-val">"TCP"</span>
-                      <button class="btn-review-pill" id="btnReviewRow4" title="Review mapping AI proposal">Check</button>
-                    </div>
-                    <div class="diff-confidence-bar-track" data-tooltip="61.2% — Needs human check: protocol detected as TCP">
-                      <div class="diff-confidence-bar-fill" data-target-width="61.2%" style="--bar-color: #777a88; width: 0%;"></div>
-                    </div>
-                  </div>
-
-                  <!-- Row 5 (97.8% Copper) -->
-                  <div class="diff-row-unit">
-                    <div class="diff-line diff-highlight" id="wocsf-line-5">
-                      <span class="line-no">05</span>
-                      <span class="code-key">"vulnerabilities[0].cve.uid":</span> 
-                      <span class="code-val">"<span class="term-explain" data-term="cve">CVE-2024-3400</span>"</span>
-                    </div>
-                    <div class="diff-confidence-bar-track" data-tooltip="97.8% — Known vulnerability ID CVE-2024-3400 verified">
-                      <div class="diff-confidence-bar-fill" data-target-width="97.8%" style="--bar-color: #cc9166; width: 0%;"></div>
-                    </div>
-                  </div>
-                </div>
+                <div class="diff-code-body" id="wizardDiffOcsfBody"></div>
               </div>
             </div>
 
@@ -1126,8 +1047,8 @@
             <div class="wax-seal-showcase">
               <div class="seal-prompt-box">
                 <span class="seal-prompt-badge">PERMANENT APPROVED TRANSLATION</span>
-                <h4 class="seal-prompt-headline">Palo Alto Firewall → Universal Format (Network Activity)</h4>
-                <p class="seal-prompt-meta">AI Accuracy: 99.8% · All fields mapped · Tamper-proof digital seal ready</p>
+                <h4 class="seal-prompt-headline" id="sealPromptHeadline">Palo Alto Firewall → Universal Format (Network Activity)</h4>
+                <p class="seal-prompt-meta" id="sealPromptMeta">AI Accuracy: 99.8% · All fields mapped · Tamper-proof digital seal ready</p>
               </div>
 
               <div class="seal-action-center">
@@ -1206,7 +1127,7 @@
                 <line x1="0" y1="120" x2="900" y2="120" stroke="var(--hairline)" />
 
                 <!-- Healthy Source Line (Palo Alto) -->
-                <path d="M 0,22 Q 200,18 450,20 T 900,16" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" />
+                <path class="drift-healthy-line" d="M 0,22 Q 200,18 450,20 T 900,16" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" />
 
                 <!-- Drifting Source Area & Line (Okta SSO v2) -->
                 <path d="M 0,26 Q 250,24 500,32 L 620,84 L 700,98 L 780,92 L 900,88 L 900,160 L 0,160 Z" fill="url(#driftAreaGrad)" />
@@ -1331,10 +1252,16 @@
           <!-- Tamper Simulation Control Bar -->
           <div class="tamper-control-card glass-card-3d">
             <div class="tamper-control-info">
-              <span class="tamper-control-title">Test Hacker Tamper Attack</span>
-              <p class="tamper-control-sub">Click the button to secretly change one byte of data in past Block #891,240 to see how the system catches it.</p>
+              <span class="tamper-control-title">Cryptographic Tamper-Proof Record Book</span>
+              <p class="tamper-control-sub" id="ledgerStatusSubtitle">
+                Tracking <strong id="ledgerTotalBlocksCount">86</strong> sealed cryptographic blocks with SHA-256 chain links &amp; Ed25519 digital signatures.
+              </p>
             </div>
-            <div class="tamper-control-btns">
+            <div class="tamper-control-actions">
+              <div class="ledger-search-box">
+                <input type="text" id="ledgerSearchInput" class="search-input"
+                  placeholder="Search ledger blocks by name or #ID..." style="width: 240px;" />
+              </div>
               <button class="btn-pill" id="btnSimulateTamper">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
@@ -1348,72 +1275,20 @@
                 </svg>
                 <span>Auto-Repair from Untampered Backup</span>
               </button>
+              <button class="btn-pill" id="btnToggleAllBlockDetails" title="Toggle technical cryptographic hashes on all blocks" aria-expanded="false">
+                <span id="btnToggleAllBlockDetailsText">Show Hashes ▾</span>
+              </button>
             </div>
           </div>
 
           <!-- Chained Ledger Links Visualizer -->
           <div class="chained-ledger-visualizer" id="chainedLedgerVisualizer">
-            <!-- Block 891,241 -->
-            <div class="ledger-chain-block glass-card-3d" id="chainNode891">
-              <div class="chain-block-top">
-                <span class="chain-block-num">BLOCK #891,241 (LATEST)</span>
-                <span class="chain-seal-tag" id="statusBadge891">UNTOUCHED & SEALED</span>
-              </div>
-              <div class="chain-block-hashes">
-                <div class="hash-item"><span class="hash-lbl">Current Fingerprint:</span> <code class="hash-str">0x9a8e21c0e34f...d24b7a</code></div>
-                <div class="hash-item"><span class="hash-lbl">Previous Fingerprint:</span> <code class="hash-str" id="parentHash891">0x4f12a9b3c801...e81c3d</code></div>
-              </div>
-              <div class="chain-block-footer">
-                <span>1,024 Logs Locked Together</span>
-                <span>Master Seal: Verified</span>
-              </div>
-            </div>
-
-            <!-- Connecting Chain Link 1 -->
-            <div class="chain-connector-link" id="connectorLink891">
-              <div class="connector-line"></div>
-              <div class="connector-lock">🔒</div>
-              <!-- Signature 1px Fracture Crack Line -->
-              <div class="fracture-crack-line" id="fractureCrackLine"></div>
-            </div>
-
-            <!-- Block 891,240 (Target of Tamper Simulation) -->
-            <div class="ledger-chain-block glass-card-3d" id="chainNode890">
-              <div class="chain-block-top">
-                <span class="chain-block-num">BLOCK #891,240 (PAST LOGS)</span>
-                <span class="chain-seal-tag" id="statusBadge890">UNTOUCHED & SEALED</span>
-              </div>
-              <div class="chain-block-hashes">
-                <div class="hash-item"><span class="hash-lbl">Current Fingerprint:</span> <code class="hash-str" id="blockHash890">0x4f12a9b3c801...e81c3d</code></div>
-                <div class="hash-item"><span class="hash-lbl">Previous Fingerprint:</span> <code class="hash-str">0xb73ac410982f...912f04</code></div>
-              </div>
-              <div class="chain-block-footer">
-                <span>1,024 Logs Locked Together</span>
-                <span>Master Seal: Verified</span>
-              </div>
-            </div>
-
-            <!-- Connecting Chain Link 2 -->
-            <div class="chain-connector-link">
-              <div class="connector-line"></div>
-              <div class="connector-lock">🔒</div>
-            </div>
-
-            <!-- Block 891,239 -->
-            <div class="ledger-chain-block glass-card-3d" id="chainNode889">
-              <div class="chain-block-top">
-                <span class="chain-block-num">BLOCK #891,239 (OLDER LOGS)</span>
-                <span class="chain-seal-tag">UNTOUCHED & SEALED</span>
-              </div>
-              <div class="chain-block-hashes">
-                <div class="hash-item"><span class="hash-lbl">Current Fingerprint:</span> <code class="hash-str">0xb73ac410982f...912f04</code></div>
-                <div class="hash-item"><span class="hash-lbl">Previous Fingerprint:</span> <code class="hash-str">0x1109ff8271ea...aa4419</code></div>
-              </div>
-              <div class="chain-block-footer">
-                <span>1,024 Logs Locked Together</span>
-                <span>Master Seal: Verified</span>
-              </div>
-            </div>
+            <!-- Dynamic blocks injected by renderLedgerVisualizer() from backend hashchain -->
+          </div>
+          <div style="display: flex; justify-content: center; margin-top: 18px; margin-bottom: 24px;">
+            <button class="btn-pill" id="btnLoadMoreLedgerBlocks" style="cursor: pointer;">
+              <span>Load Earlier Sealed Blocks (Older Logs) ↓</span>
+            </button>
           </div>
         </div>
 
@@ -1451,6 +1326,7 @@
                 <span class="legend-item"><span class="legend-dot host"></span>Company Computer</span>
                 <span class="legend-item"><span class="legend-dot user"></span>User Account</span>
                 <span class="legend-item"><span class="legend-dot process"></span>Malicious Software</span>
+                <span class="legend-item"><span class="legend-dot" style="background: var(--accent-copper, #ae9357); box-shadow: 0 0 6px var(--accent-copper, #ae9357);"></span>MITRE ATT&CK: T1110, T1003, T1021.001</span>
               </div>
               <div class="graph-actions">
                 <button class="btn-pill" id="btnTraceAttack">
@@ -1836,6 +1712,8 @@
     <span class="glossary-tooltip-def" id="glossaryDef">Definition text goes here.</span>
   </div>
 
+  <script src="api.js"></script>
+  <script src="login.js"></script>
   <script src="app.js"></script>
 </body>
 

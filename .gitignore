@@ -1,8 +1,18 @@
 __pycache__/
 *.pyc
 .env
+backend/.env
+*.env
 node_modules/
 dist/
 .venv/
 *.db
 .DS_Store
+
+# Tooling and IDE debris
+.vscode/
+.agents/
+.ruff_cache/
+
+# Local raw store data dumps (keep structure, ignore json event payloads)
+data/raw_store/*.json

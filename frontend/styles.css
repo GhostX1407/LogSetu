@@ -51,6 +51,19 @@
   --radius-card: 10px;
   --radius-pill: 9999px;
 
+  /* Global Standardized Spacing Scale (4px/8px Geometric Scale) */
+  --space-2xs: 4px;   /* Micro badges, tiny icons */
+  --space-xs:  8px;   /* Tight button gaps, badge internal padding */
+  --space-sm:  12px;  /* Default controls gap, input padding */
+  --space-md:  16px;  /* Card internal sections, standard flex gap */
+  --space-lg:  20px;  /* Panel gutters, toolbar spacing */
+  --space-xl:  24px;  /* Card padding, large section separation */
+  --space-2xl: 32px;  /* View hero margins, major component blocks */
+  --space-3xl: 48px;  /* Page sections, layout bounds */
+
+  /* Minimum touch and control heights */
+  --control-height: 34px;
+
   /* Subtle Film Grain */
   --grain-opacity: 0.025;
 }
@@ -1009,20 +1022,25 @@ html.theme-switching *::after {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 /* Control Pills & Buttons */
 .btn-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  height: 34px;
-  padding: 0 13px;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: var(--control-height);
+  padding: 0 14px;
   border-radius: var(--radius-pill);
   font-family: var(--font-sans);
   font-size: 0.84rem;
   font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
   border: 1px solid rgba(255, 255, 255, 0.09);
   background: rgba(22, 24, 30, 0.6);
   backdrop-filter: blur(16px);
@@ -1031,6 +1049,13 @@ html.theme-switching *::after {
   cursor: pointer;
   transition: all var(--trans-micro);
   user-select: none;
+}
+
+.btn-pill.btn-icon-only {
+  width: var(--control-height);
+  min-width: var(--control-height);
+  padding: 0;
+  justify-content: center;
 }
 
 .btn-pill:hover {
@@ -1073,7 +1098,7 @@ html.theme-switching *::after {
   color: #b46b32;
 }
 
-/* Main Dashboard Body with Spine */
+/* Main Dashboard Body */
 .main-viewport {
   display: flex;
   flex: 1;
@@ -1081,16 +1106,31 @@ html.theme-switching *::after {
   max-width: 1720px;
   margin: 0 auto;
   padding: 24px 28px 48px;
+}
+
+/* Overview Dedicated Split Layout (Spine on Left, Console on Right) */
+.overview-layout {
+  display: flex;
+  width: 100%;
   gap: 32px;
+  align-items: flex-start;
+}
+
+.overview-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
 /* ==========================================================================
-   SIGNATURE FEATURE: THE LEDGER SPINE
+   SIGNATURE FEATURE: THE LEDGER SPINE (View 01 Live Overview Only)
    A vertical hairline annotated with serif folios & traveling copper dot
    ========================================================================== */
 
 .ledger-spine-container {
-  width: 200px;
+  width: 220px;
   flex-shrink: 0;
   position: sticky;
   top: 116px;
@@ -1720,14 +1760,14 @@ html.theme-switching *::after {
   left: 0;
   top: 0;
   height: 100%;
-  width: 85%;
+  width: 94%;
   background: linear-gradient(90deg, var(--border-tertiary), var(--accent-copper));
   border-radius: 2px;
 }
 
 .custom-range-thumb {
   position: absolute;
-  left: 85%;
+  left: 94%;
   top: 50%;
   width: 12px;
   height: 12px;
@@ -1749,6 +1789,128 @@ html.theme-switching *::after {
   font-weight: 600;
 }
 
+/* Part 5: Translation Strictness — Mapped vs Flagged Statuses */
+.ocsf-row.flagged-for-review {
+  background: rgba(243, 156, 18, 0.08) !important;
+  border: 1px dashed rgba(243, 156, 18, 0.45) !important;
+}
+
+.ocsf-row.flagged-for-review:hover, .ocsf-row.flagged-for-review.highlighted {
+  background: rgba(243, 156, 18, 0.18) !important;
+  border-color: rgba(243, 156, 18, 0.8) !important;
+}
+
+.ocsf-row.mapped-verified {
+  border: 1px solid transparent;
+}
+
+.ocsf-row.mapped-verified:hover, .ocsf-row.mapped-verified.highlighted {
+  background: rgba(204, 145, 102, 0.14);
+}
+
+.ocsf-confidence-chip.flagged {
+  border-color: #f39c12 !important;
+  color: #f39c12 !important;
+  background: rgba(243, 156, 18, 0.16) !important;
+}
+
+.ocsf-confidence-chip.verified {
+  border-color: rgba(204, 145, 102, 0.35) !important;
+  color: var(--accent-copper) !important;
+  background: var(--accent-copper-soft) !important;
+}
+
+.review-status-pill {
+  font-size: 0.70rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(243, 156, 18, 0.18);
+  color: #f39c12;
+  border: 1px solid rgba(243, 156, 18, 0.4);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
+
+.raw-line.flagged-raw-token {
+  border-left: 2px solid #f39c12;
+}
+
+.thread-path.flagged-thread {
+  stroke: #f39c12 !important;
+  stroke-dasharray: 4, 3;
+}
+
+/* Strictness Slider Info Popover & Icon */
+.slider-info-icon {
+  background: transparent;
+  border: none;
+  min-width: 20px;
+  min-height: 20px;
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  margin-left: -2px;
+  margin-right: 2px;
+  transition: color var(--trans-micro), transform var(--trans-micro);
+  position: relative;
+}
+
+.slider-info-icon:hover, .slider-info-icon.active {
+  color: var(--accent-copper);
+  transform: scale(1.15);
+}
+
+.strictness-info-popup {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 280px;
+  background: #111216;
+  border: 1px solid rgba(204, 145, 102, 0.4);
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8), 0 0 16px rgba(204, 145, 102, 0.18);
+  z-index: 1000;
+  color: #d1d3df;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+.strictness-info-popup.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.strictness-info-popup h4 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-copper);
+  margin-bottom: 6px;
+}
+
+[data-theme="ice-white"] .strictness-info-popup {
+  background: #ffffff;
+  border-color: rgba(180, 107, 50, 0.4);
+  color: #334155;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 0 16px rgba(180, 107, 50, 0.12);
+}
+
 /* The Split Columns with SVG Thread Overlay */
 .trace-split-wrapper {
   position: relative;
@@ -1759,6 +1921,7 @@ html.theme-switching *::after {
 }
 
 /* SVG Connecting Thread Overlay */
+.trace-threads-canvas,
 .thread-canvas-svg {
   position: absolute;
   inset: 0;
@@ -1870,6 +2033,8 @@ html.theme-switching *::after {
 
 .raw-token-val {
   color: #fff0cc;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .raw-token-accent {
@@ -1905,6 +2070,7 @@ html.theme-switching *::after {
   border-radius: 4px;
   transition: background var(--trans-micro);
   cursor: pointer;
+  gap: 12px;
 }
 
 .ocsf-row:hover, .ocsf-row.highlighted {
@@ -1913,10 +2079,15 @@ html.theme-switching *::after {
 
 .ocsf-key {
   color: var(--text-heading);
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  flex: 1;
 }
 
 .ocsf-val {
   color: #fff0cc;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .ocsf-confidence-chip {
@@ -1972,7 +2143,7 @@ html.theme-switching *::after {
 
 .bottom-grid {
   display: grid;
-  grid-template-columns: 1.55fr 1fr;
+  grid-template-columns: 1fr;
   gap: 20px;
   align-items: stretch;
 }
@@ -2029,19 +2200,26 @@ html.theme-switching *::after {
 .stream-tools {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-md);
+  flex-wrap: nowrap;
+}
+
+#streamSearch {
+  width: 340px;
+  max-width: 100%;
 }
 
 .search-input {
   background: var(--bg-panel);
   border: 1px solid var(--border-secondary);
   border-radius: var(--radius-pill);
+  min-height: var(--control-height);
   padding: 6px 14px;
   font-size: 0.85rem;
   color: var(--text-white);
   font-family: var(--font-sans);
   outline: none;
-  width: 190px;
+  width: 210px;
   transition: border-color var(--trans-micro);
 }
 
@@ -2055,7 +2233,9 @@ html.theme-switching *::after {
 
 /* Stream Table */
 .stream-table-wrap {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   border: 1px solid var(--border-primary);
   border-radius: 8px;
   background: var(--bg-card);
@@ -2068,24 +2248,30 @@ html.theme-switching *::after {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
+  table-layout: auto;
 }
 
 .stream-table th {
   background: var(--bg-panel);
-  padding: 11px 14px;
+  padding: 11px 16px;
   font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-muted);
   border-bottom: 1px solid var(--border-primary);
+  white-space: nowrap;
 }
 
 .stream-table td {
-  padding: 12px 14px;
+  padding: 10px 16px;
   font-size: 0.86rem;
   border-bottom: 1px solid var(--border-primary);
   color: var(--text-supp);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 320px;
 }
 
 .stream-row {
@@ -2139,13 +2325,54 @@ html.theme-switching *::after {
   font-size: 0.84rem;
 }
 
+.stream-table th:nth-child(1),
+.stream-table td:nth-child(1) {
+  width: 125px;
+  min-width: 110px;
+}
+
+.stream-table th:nth-child(2),
+.stream-table td:nth-child(2) {
+  min-width: 220px;
+}
+
+.stream-table th:nth-child(3),
+.stream-table td:nth-child(3) {
+  width: 115px;
+  min-width: 95px;
+}
+
+.stream-table th:nth-child(4),
+.stream-table td:nth-child(4) {
+  min-width: 180px;
+}
+
+.stream-table th:nth-child(5),
+.stream-table td:nth-child(5) {
+  width: 130px;
+  min-width: 120px;
+  overflow: visible;
+}
+
+.stream-table th:nth-child(6),
+.stream-table td:nth-child(6) {
+  width: 140px;
+  min-width: 130px;
+}
+
 .severity-chip {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: var(--radius-pill);
+  min-width: 76px;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .severity-chip.critical {
@@ -2396,8 +2623,11 @@ html.theme-switching *::after {
 
 @media (max-width: 1280px) {
   .main-viewport {
-    flex-direction: column;
     padding: 16px 20px 40px;
+  }
+  .overview-layout {
+    flex-direction: column;
+    gap: 20px;
   }
   .ledger-spine-container {
     width: 100%;
@@ -2501,13 +2731,13 @@ html.theme-switching *::after {
 
 .freeze-banner {
   position: fixed;
-  top: 56px;
+  top: 110px;
   left: 0;
   right: 0;
   background: linear-gradient(90deg, rgba(160, 20, 20, 0.96), rgba(50, 5, 5, 0.98));
   border-bottom: 1px solid #ff4757;
-  padding: 10px 24px;
-  z-index: 99990;
+  padding: 8px 24px;
+  z-index: 98;
   display: none;
   animation: freezeSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   box-shadow: 0 8px 30px rgba(255, 0, 0, 0.28);
@@ -2515,6 +2745,43 @@ html.theme-switching *::after {
 
 .freeze-banner.active {
   display: block;
+}
+
+body.system-frozen .main-viewport {
+  padding-top: 50px;
+}
+
+body.system-frozen .frozen-disabled,
+body.system-frozen button:disabled:not(.view-nav-item):not(#btnForensicFreeze):not(#btnThaw):not(#btnThemeToggle):not(#btnSoundToggle),
+body.system-frozen input:disabled:not(#ledgerSearchInput),
+body.system-frozen textarea:disabled {
+  opacity: 0.42 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  filter: grayscale(0.6) !important;
+}
+
+body.system-frozen .log-dropzone.frozen-disabled,
+body.system-frozen .dropzone-card.frozen-disabled {
+  border-style: dashed !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  background: rgba(10, 10, 14, 0.4) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+[data-theme="ice-white"] body.system-frozen .log-dropzone.frozen-disabled,
+body.system-frozen[data-theme="ice-white"] .log-dropzone.frozen-disabled,
+[data-theme="ice-white"] body.system-frozen .dropzone-card.frozen-disabled,
+body.system-frozen[data-theme="ice-white"] .dropzone-card.frozen-disabled {
+  border-color: rgba(0, 0, 0, 0.15) !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+body.system-frozen .slider-container.frozen-disabled {
+  opacity: 0.42 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
 }
 
 @keyframes freezeSlideDown {
@@ -2861,6 +3128,21 @@ html.theme-switching *::after {
   filter: drop-shadow(0 0 6px var(--accent-copper));
 }
 
+.diff-line.photon-active {
+  background: rgba(204, 145, 102, 0.2) !important;
+  border-left: 2px solid var(--accent-copper) !important;
+  box-shadow: 0 0 12px rgba(204, 145, 102, 0.2);
+  transform: translateX(2px);
+  transition: all var(--trans-micro);
+}
+
+body.system-frozen .live-pulse-dot,
+body.system-frozen .live-stream-pulse,
+body.system-frozen .pulse-dot {
+  animation-play-state: paused !important;
+  opacity: 0.5;
+}
+
 /* ==========================================================================
    CONSOLE VIEW NAVIGATOR & MULTI-SCREEN ROUTER STYLES
    ========================================================================== */
@@ -3120,7 +3402,7 @@ html.theme-switching *::after {
 .preset-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-sm);
 }
 
 .preset-chip {
@@ -3131,6 +3413,8 @@ html.theme-switching *::after {
   color: var(--text-data);
   font-family: var(--font-mono);
   font-size: 0.82rem;
+  white-space: nowrap;
+  flex-shrink: 0;
   cursor: pointer;
   transition: all var(--trans-micro);
 }
@@ -3192,6 +3476,8 @@ html.theme-switching *::after {
   border-radius: 3px;
   display: flex;
   gap: 8px;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .diff-line.diff-highlight {
@@ -3459,9 +3745,64 @@ html.theme-switching *::after {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
   padding: 20px 24px;
   border-radius: var(--radius-card);
   margin-bottom: 24px;
+}
+
+.tamper-control-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.tamper-control-actions .btn-pill {
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+#btnSimulateTamper.active {
+  border-color: #ff4757;
+  color: #ff4757;
+  background: rgba(255, 71, 87, 0.12);
+  box-shadow: 0 0 12px rgba(255, 71, 87, 0.25);
+}
+
+#btnHealChain {
+  border-color: #2ecc71;
+  color: #2ecc71;
+  background: rgba(46, 204, 113, 0.12);
+  box-shadow: 0 0 12px rgba(46, 204, 113, 0.25);
+}
+
+#btnHealChain:hover {
+  background: rgba(46, 204, 113, 0.22);
+  border-color: #2ecc71;
+  color: #ffffff;
+}
+
+[data-theme="ice-white"] #btnSimulateTamper.active {
+  border-color: #e84118;
+  color: #c23616;
+  background: rgba(232, 65, 24, 0.1);
+}
+
+[data-theme="ice-white"] #btnHealChain {
+  border-color: #27ae60;
+  color: #219653;
+  background: rgba(39, 174, 96, 0.1);
+}
+
+.tamper-control-card .ledger-search-box input {
+  min-height: var(--control-height);
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  border-radius: var(--radius-pill);
 }
 
 .tamper-control-title {
@@ -3550,6 +3891,9 @@ html.theme-switching *::after {
 .chain-block-footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 0.80rem;
   color: var(--text-ghost);
@@ -3629,6 +3973,8 @@ html.theme-switching *::after {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
   margin-bottom: 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--hairline);
@@ -3636,7 +3982,9 @@ html.theme-switching *::after {
 
 .graph-legend {
   display: flex;
-  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
   font-family: var(--font-mono);
   font-size: 0.82rem;
   color: var(--text-ghost);
@@ -5453,6 +5801,270 @@ body.explain-active .term-explain:hover {
   color: var(--accent-copper);
   font-weight: bold;
 }
+
+/* ==========================================================================
+   PART 6 BUG & VISUAL-GLITCH POLISH (Zero design change, high visual integrity)
+   ========================================================================== */
+
+/* 1. Empty States styling for Traceability & Wizard Step 2 */
+.trace-empty-container,
+.wizard-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 260px;
+  padding: 44px 24px;
+  text-align: center;
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: var(--bg-card);
+  transition: all var(--trans-panel);
+}
+
+.wizard-empty-state {
+  margin-top: 16px;
+}
+
+[data-theme="ice-white"] .trace-empty-container,
+[data-theme="ice-white"] .wizard-empty-state {
+  border: 1px dashed rgba(0, 0, 0, 0.16);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+/* 2. Attack Graph Node Hover text contrast in Light Mode */
+[data-theme="ice-white"] .graph-node-group:hover .node-text {
+  fill: #000000 !important;
+}
+
+/* 3. Tampered Block contrast in Light Mode */
+[data-theme="ice-white"] .ledger-chain-block.tampered {
+  background: #fff2f2 !important;
+  border-color: #e74c3c !important;
+  box-shadow: 0 4px 20px rgba(231, 76, 60, 0.22) !important;
+}
+
+[data-theme="ice-white"] .ledger-chain-block.tampered .hash-str {
+  color: #c0392b !important;
+}
+
+/* 4. Ledger Payload Snippet */
+.ledger-payload-preview {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--hairline);
+  padding: 7px 12px;
+  border-radius: 6px;
+  margin: 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-theme="ice-white"] .ledger-payload-preview {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.09);
+  color: var(--text-body);
+}
+
+/* 5. Single-block tamper button in Light Mode */
+[data-theme="ice-white"] .btn-tamper-single-block {
+  color: #c0392b !important;
+  border-color: rgba(192, 57, 43, 0.45) !important;
+}
+
+/* 6. Freeze Banner text readability */
+.freeze-banner {
+  color: #ffffff;
+}
+
+/* 7. Stream Table Interactive Rows */
+.stream-table tbody tr {
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.stream-table tbody tr:hover {
+  background: rgba(204, 145, 102, 0.07);
+}
+
+[data-theme="ice-white"] .stream-table tbody tr:hover {
+  background: rgba(180, 107, 50, 0.08);
+}
+
+/* ==========================================================================
+   PART 7 SIMPLIFICATION FOR FIRST-TIME VIEWERS (ON-DEMAND DETAIL DISCLOSURE)
+   ========================================================================== */
+
+/* 1. Summary Headline Banners (View 02 & View 03) */
+.section-summary-banner {
+  background: var(--bg-card);
+  border: 1px solid var(--border-secondary);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all var(--trans-panel);
+}
+
+.summary-banner-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.summary-banner-headline {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.summary-banner-headline em {
+  font-style: normal;
+  color: var(--accent-copper);
+}
+
+.summary-metric-chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.summary-metric-chip {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-floating);
+  border: 1px solid var(--hairline);
+  color: var(--text-body);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.summary-metric-chip strong {
+  color: var(--accent-copper);
+}
+
+.summary-metric-chip.success strong {
+  color: #2ecc71;
+}
+
+[data-theme="ice-white"] .section-summary-banner {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="ice-white"] .summary-metric-chip {
+  background: #f8f9fc;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #2c303c;
+}
+
+/* 2. On-Demand Collapsible Detail Containers */
+.collapsible-detail-wrapper {
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  overflow: hidden;
+}
+
+.collapsible-detail-wrapper.collapsed {
+  display: none !important;
+}
+
+/* 3. Block Technical Hashes & Details (View 05) */
+.block-technical-details {
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+  overflow: hidden;
+}
+
+.block-technical-details.collapsed {
+  display: none;
+}
+
+.chain-block-compact-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px 0 10px 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.chain-block-compact-row .compact-source {
+  color: var(--text-heading);
+  font-weight: 500;
+}
+
+.chain-block-compact-row .compact-fingerprint {
+  color: var(--accent-copper);
+}
+
+.btn-toggle-detail {
+  font-family: var(--font-sans);
+  font-size: 0.80rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Tamper control buttons header container */
+.tamper-control-btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Step 2 Code Diff Key and Value Tokens */
+.code-key {
+  color: var(--text-supp);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.code-val {
+  color: #fff0cc;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+[data-theme="ice-white"] .code-key {
+  color: var(--text-body);
+}
+
+[data-theme="ice-white"] .code-val {
+  color: #925422 !important;
+}
+
+/* Drift healthy line light mode visibility */
+.drift-healthy-line {
+  stroke: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="ice-white"] .drift-healthy-line {
+  stroke: rgba(0, 0, 0, 0.35) !important;
+}
+
+
+
 
 
 
