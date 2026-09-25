@@ -686,8 +686,8 @@
         const cx = rect.width / 2;
         const cy = rect.height / 2;
 
-        const rotX = ((y - cy) / cy) * -4.5;
-        const rotY = ((x - cx) / cx) * 4.5;
+        const rotX = ((y - cy) / cy) * -1.35;
+        const rotY = ((x - cx) / cx) * 1.35;
 
         card.style.transform = `perspective(900px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateZ(2px)`;
         card.style.setProperty('--shine-x', `${x}px`);
