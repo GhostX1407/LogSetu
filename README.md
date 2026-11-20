@@ -323,6 +323,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Developed under the **Smart India Hackathon 2026** initiative.
 - Special acknowledgment to the **National Technical Research Organisation (NTRO)** for defining problem statement SIH26156.
 - Aligned with the specifications of the **Open Cybersecurity Schema Framework (OCSF)**.
