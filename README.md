@@ -1,7 +1,6 @@
 # LogSetu (लॉगसेतु)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![SIH 2026](https://img.shields.io/badge/SIH-SIH26156-blue.svg)](https://www.sih.gov.in/)
 [![Organization: NTRO](https://img.shields.io/badge/Organization-NTRO-orange.svg)](https://ntro.gov.in/)
 [![Theme: Blockchain & Cybersecurity](https://img.shields.io/badge/Theme-Blockchain%20%26%20Cybersecurity-red.svg)](#)
 [![Python: 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
@@ -10,7 +9,6 @@
 [![Cryptography: Ed25519 + SHA-256](https://img.shields.io/badge/Crypto-Ed25519%20%2B%20SHA--256-green.svg)](#)
 
 > **Universal Log Pre-processing & Cryptographic Forensic Pipeline for Heterogeneous Sovereign Telemetry**  
-> *Built for Problem Statement SIH26156 -- National Technical Research Organisation (NTRO)*
 
 ---
 
@@ -319,21 +317,6 @@ The backend exposes a full OpenAPI specification accessible via **`/docs`** (Swa
 | `GET` | `/health` | Core | System health check endpoint |
 
 ---
-
-## Team & Problem Statement Info
-
-- **Competition:** Smart India Hackathon (SIH) 2026
-- **Problem Statement ID:** SIH26156
-- **Problem Statement Title:** Universal Log Pre-processing Framework for Heterogeneous High-Throughput Environments
-- **Nodal Agency / Organization:** National Technical Research Organisation (NTRO)
-- **Category:** Software
-- **Theme:** Blockchain & Cybersecurity
-- **Team Name:** [FILL IN: Your Team Name]
-
----
-
-## License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
